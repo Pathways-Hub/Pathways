@@ -1,0 +1,116 @@
+@font-face {
+    font-family: 'OstrichLight';
+    src: url('fonts/OstrichReg.ttf') format('truetype');
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #ffffff; /* Background color */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.header1 {
+    background-color: #1C1C1C; /* Slightly darker gray for header1 */
+    padding: 0; /* No padding */
+    height: 10px; /* Set height to 10px */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between the buttons */
+    padding: 0 10px; /* Padding on sides for spacing buttons */
+}
+
+.header2 {
+    background-color: #0D0C0C; /* Dark header color */
+    padding: 4vw; /* Larger padding for header2 */
+    text-align: right; /* Align text to the right */
+    position: relative;
+}
+
+.date {
+    font-family: 'OstrichLight', Arial, sans-serif; /* Use custom font */
+    font-size: 4vw; /* Font size for date */
+    color: #ffffff; /* Date color */
+    position: absolute;
+    bottom: 0; /* Position at the bottom of the header */
+    right: 0; /* Align to the right */
+    margin: 0.5vw; /* Margin for better spacing */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns */
+    grid-template-rows: repeat(5, 1fr); /* 5 rows */
+    flex: 1;
+    width: 100%;
+    border: 1px solid #0D0C0C; /* Same color as the header */
+    border-top: none; /* Remove top border to align with the header */
+}
+
+.grid-item {
+    border: 1px solid #0D0C0C; /* Same color as the header */
+    background-color: transparent;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    position: relative; /* Positioning context for day number */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.grid-item:hover {
+    background-color: #e0e0e0; /* Light gray background on hover */
+}
+
+.day-number {
+    position: absolute;
+    top: 0.5vw;
+    left: 0.5vw;
+    font-family: Arial, sans-serif;
+    font-size: 1vw; /* Smaller font size */
+    color: #0D0C0C;
+}
+
+.day-name {
+    position: absolute;
+    top: 2vw; /* Position below the day number */
+    left: 0.5vw;
+    font-family: Arial, sans-serif;
+    font-size: 0.8vw; /* Slightly smaller font size for day names */
+    color: #0D0C0C;
+}
+
+.prev-month, .next-month {
+    background-color: #dbdbdb; /* Gray out previous and next month days */
+    color: #666666; /* Slightly lighter gray for the text */
+}
+
+.current-date .day-number, .current-date .day-name {
+    font-weight: bold; /* Make the current date text bold */
+    color: #F44A01; /* Same color as the big text in the header */
+}
+
+.nav-button {
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF; /* White color for icons */
+    font-size: 16px; /* Size of the arrows */
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-button:focus {
+    outline: none; /* Remove outline on focus */
+}
+
+.nav-button#last {
+    font-size: 12px; /* Size of the left arrow */
+}
+
+.nav-button#next {
+    font-size: 12px;
+}

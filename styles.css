@@ -1,0 +1,117 @@
+/* General body styling */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+    transition: background-image 0.3s;
+}
+
+/* Styling for the broken heart icon */
+.broken-heart-icon {
+    font-size: 16px; /* Smaller size */
+    color: black;
+    position: fixed;
+    top: 10px; /* Distance from the top */
+    right: 10px; /* Distance from the right */
+    z-index: 1003; /* Ensure the icon is above all other elements */
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: black; /* Solid black background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 20px;
+    transition: width 0.3s; /* Smooth transition for width change */
+}
+
+/* Sidebar logo */
+.sidebar-logo {
+    width: 100px; /* Adjusted smaller logo size */
+    height: auto;
+    position: absolute;
+    top: 20px; /* Move closer to the corner */
+    left: 20px;
+}
+
+/* Content area styling */
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: calc(100vh - 40px);
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* Button styling */
+.sidebar-button {
+    width: 300px;
+    height: 300px;
+    padding: 0;
+    background-color: #ffffff;
+    color: black;
+    border: 2px solid #ffffff;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, border-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/* Button image */
+.sidebar-button img {
+    width: 180px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Button text */
+.sidebar-button p {
+    margin: 0;
+    font-size: 18px;
+    color: #000000;
+    line-height: normal;
+}
+
+/* Button hover effect */
+.sidebar-button:hover {
+    background-color: #ffffff;
+    border-color: black; /* Change border color to black on hover */
+}
+
+/* Sidebar hover effect */
+.sidebar:hover {
+    width: 280px; /* Extended width on hover */
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Allows buttons to wrap to the next line */
+    justify-content: center; /* Center the buttons on the page */
+}

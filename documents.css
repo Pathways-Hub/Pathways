@@ -1,0 +1,156 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Header styling */
+header {
+    width: 100%;
+    height: 35px; /* Thinner header */
+    background-color: #f8f8f8; /* Off-white background */
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header-logo {
+    height: 22px; /* Smaller logo */
+}
+
+.editable-title {
+    font-size: 15px;
+    color: black;
+    margin-left: 15px;
+    outline: none;
+    background: transparent;
+    border: none;
+    width: 200px;
+    font-family: Arial, sans-serif;
+}
+
+/* Document container and page styling */
+.document-container {
+    width: 100vw;
+    height: calc(100vh - 35px);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10vh 0;
+    margin-top: 35px;
+}
+
+.pages-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.document-editor {
+    position: relative;
+    width: 50vw;
+    aspect-ratio: 210 / 297; /* A4 aspect ratio */
+    border: 1px solid black;
+    padding: 10px;
+    background-color: white;
+}
+
+.document-area {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 1vw;
+    font-family: Arial, sans-serif;
+    padding: 20px; /* Add padding to all sides inside the document */
+}
+
+#add-page {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #add8e6;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#add-page i {
+    font-size: 18px;
+}
+
+.page-number {
+    position: absolute;
+    left: -50px;
+    top: 10px;
+    font-size: 14px;
+    color: black;
+    background-color: #add8e6;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Style for all icon buttons */
+.iconbutton {
+    background: none; /* No background color by default */
+    border: none; /* No border by default */
+    color: #000; /* Black text color */
+    padding: 8px 12px; /* Padding inside the button */
+    font-size: 16px; /* Font size for the icon */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: inline-flex; /* Align items inside the button */
+    align-items: center; /* Center icon vertically */
+    justify-content: center; /* Center icon horizontally */
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth background and color transition */
+}
+
+/* Hover effect */
+.iconbutton:hover {
+    background: #f0f0f0; /* Light grey background on hover */
+    color: #000; /* Ensure text color remains black */
+}
+
+/* Active state effect */
+.iconbutton:active {
+    background: #e0e0e0; /* Slightly darker grey when button is pressed */
+    color: #000; /* Ensure text color remains black */
+}
+
+/* Add a class for active state */
+.iconbutton.active {
+    background: #e0e0e0; /* Keep background color when activated */
+}
+
+/* Style for word count display */
+#word-count {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: #f0f0f0; /* Light grey background */
+    color: #000; /* Black text color */
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}

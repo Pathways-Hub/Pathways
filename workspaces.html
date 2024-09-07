@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathways</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="workstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <header id="header">
+        <div class="toggle-button-container">
+            <a href="index.html"> <!-- Make the logo clickable to the same page -->
+                <img src="images/pathwaystl.png" alt="Pathways Logo" id="headerImage" style="width: 100px; height: auto;" />
+            </a>
+            <input type="text" class="editable-title" value="Untitled Workspace" />
+            <button class="icon-button" id="hideHeaderButton">
+                <i class="fas fa-lock"></i>
+            <button id="information" class="icon-button">
+                <i class="fa-solid fa-circle-info"></i>
+            </button>
+            </button>
+            <button class="icon-button" id="gridToggleButton">
+                <i class="fa-regular fa-rectangle-xmark"></i>
+            </button>
+            <button class="icon-button" id="paintBucketButton">
+                <i class="fas fa-fill-drip"></i>
+            </button>
+            <button class="icon-button" id="binButton">
+                <i class="fas fa-trash"></i>
+            </button>
+            <button class="icon-button" id="lineToolButton">
+                <i class="fas fa-slash"></i>
+            </button>
+            <button id="photoImportButton" class="icon-button" title="Import Photo">
+                <i class="fas fa-globe"></i>
+            </button>
+            <button id="photoButton" class="icon-button">
+                <i class="fas fa-image"></i>
+            </button>
+            <button id="pencilButton" class="icon-button">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+            <button id="eraserButton" class="icon-button">
+                <i class="fas fa-eraser"></i>
+            </button>
+            <button id="thereforeButton" class="icon-button">
+                <i class="fa-solid fa-hand-pointer"></i>
+            </button>
+            <button id="musicButton" class="icon-button">
+                <i class="fas fa-music"></i>
+            </button>
+            <button id="cameraButton" class="icon-button">
+                <i class="fa fa-video"></i>
+            </button>
+            <button id="tableButton" class="icon-button">
+                <i class="fas fa-table"></i>
+            </button>
+            <button id="stickynote" class="icon-button">
+                <i class="fas fa-sticky-note"></i>
+            </button>
+            <button id="progress" class="icon-button">
+                <i class="fa-solid fa-circle-half-stroke"></i>
+            </button>
+            <!-- New icon buttons for Save and Load next to the logo -->
+            <button id="export" class="icon-button" title="Export">
+                <i class="fas fa-share"></i>
+            </button>
+            <button id="save" class="icon-button" title="Save">
+                <i class="fas fa-save"></i>
+            </button>
+            <button id="load" class="icon-button" title="Load">
+                <i class="fa-solid fa-upload"></i>
+            </button>
+        </div>
+    </header>
+
+    <script src="Workspace/script.js"></script>
+    <script src="Workspace/toolbar.js"></script>
+    <script src="Workspace/buttonlaws.js"></script>
+    <script src="Workspace/linetool.js"></script>
+    <script src="Workspace/imageimport.js"></script>
+    <script src="Workspace/pencil.js"></script>
+    <script src="Workspace/multiselect.js"></script>
+    <script src="Workspace/musicimport.js"></script>
+    <script src="Workspace/photoimport.js"></script>
+    <script src="Workspace/youtubeimport.js"></script>
+    <script src="Workspace/table.js"></script>
+    <script src="Workspace/movetool.js"></script>
+    <script src="Workspace/sticky.js"></script>
+    <script src="Workspace/progress.js"></script>
+    <script src="Workspace/saveload.js"></script>
+    <script src="Workspace/export.js"></script> <!-- Add the export.js script here -->
+
+    <!-- Script to handle page title updates -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const titleInput = document.querySelector('.editable-title');
+
+            const updatePageTitle = () => {
+                document.title = titleInput.value || 'Untitled Workspace';
+            };
+
+            updatePageTitle();
+
+            titleInput.addEventListener('input', updatePageTitle);
+        });
+    </script>
+</body>
+</html>

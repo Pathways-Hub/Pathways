@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Untitled Document</title>
+    <link rel="stylesheet" href="documents.css"> <!-- Ensure path is correct -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html">
+            <img src="images/pathwaystl.png" alt="Logo" class="header-logo">
+        </a>
+        <input type="text" class="editable-title" value="Untitled Document" id="doc-title" />
+        <button id="bold-btn" class="iconbutton" title="Bold">
+            <i class="fas fa-bold"></i>
+        </button>
+        <button id="italic-btn" class="iconbutton" title="Italic">
+            <i class="fas fa-italic"></i>
+        </button>
+        <button id="underline-btn" class="iconbutton" title="Underline">
+            <i class="fas fa-underline"></i>
+        </button>
+        <button id="align-left-btn" class="iconbutton" title="Align Left">
+            <i class="fas fa-align-left"></i>
+        </button>
+        <button id="align-center-btn" class="iconbutton" title="Align Center">
+            <i class="fas fa-align-center"></i>
+        </button>
+        <button id="align-right-btn" class="iconbutton" title="Align Right">
+            <i class="fas fa-align-right"></i>
+        </button>
+    </header>
+
+    <div class="document-container">
+        <div class="pages-container">
+            <div class="document-editor">
+                <div class="document-area" contenteditable="true"></div>
+                <div class="page-number">Page 1</div>
+            </div>
+        </div>
+        <button id="add-page" class="iconbutton">
+            <i class="fas fa-plus"></i> Add Page
+        </button>
+    </div>
+
+    <div id="word-count">Words: 0</div>
+
+    <script src="documents/script.js"></script>
+    <script src="documents/shortcuts.js"></script>
+    <script src="documents/align.js"></script>
+    <script>
+        const titleInput = document.getElementById('doc-title');
+        titleInput.addEventListener('input', function() {
+            document.title = titleInput.value || 'Untitled Document';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathway's Calendar</title>
+    <link rel="stylesheet" href="calendar.css">
+    <link rel="icon" href="images/favicon.png" type="image/png"> <!-- Favicon -->
+</head>
+<body>
+    <div class="header1">
+        <!-- Navigation buttons -->
+        <button id="last" class="nav-button">&#9664;</button> <!-- Left arrow -->
+        <button id="next" class="nav-button">&#9654;</button> <!-- Right arrow -->
+    </div> <!-- Shorter header with navigation buttons -->
+    <div class="header2">
+        <div class="date">
+            <script>
+                // Display the current abbreviated day and date
+                function formatDate() {
+                    const options = { weekday: 'short', day: '2-digit' };
+                    const date = new Date().toLocaleDateString('en-US', options);
+                    return date.replace(',', ''); // Remove comma to format correctly
+                }
+                document.write(formatDate());
+            </script>
+        </div>
+    </div>
+    <div class="grid-container">
+        <script>
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const daysInPrevMonth = new Date(year, month, 0).getDate();
+            const today = date.getDate(); // Current day of the month
+
+            // Function to get day abbreviation
+            function getDayName(date) {
+                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                return days[date.getDay()];
+            }
+
+            // Function to format day with leading zero if needed
+            function formatDay(day) {
+                return day < 10 ? `0${day}` : day;
+            }
+
+            // Add the last two days of the previous month
+            for (let i = daysInPrevMonth - 1; i <= daysInPrevMonth; i++) {
+                let day = new Date(year, month - 1, i);
+                let isToday = day.getDate() === today ? ' current-date' : '';
+                document.write(`
+                    <div class="grid-item prev-month${isToday}">
+                        <div class="day-number">${formatDay(i)}</div>
+                        <div class="day-name">${getDayName(day)}</div>
+                    </div>
+                `);
+            }
+
+            // Add the days of the current month
+            for (let i = 1; i <= daysInMonth; i++) {
+                let day = new Date(year, month, i);
+                let isToday = day.getDate() === today ? ' current-date' : '';
+                document.write(`
+                    <div class="grid-item${isToday}">
+                        <div class="day-number">${formatDay(i)}</div>
+                        <div class="day-name">${getDayName(day)}</div>
+                    </div>
+                `);
+            }
+
+            // Add the first few days of the next month to fill the grid
+            const remainingSlots = 35 - (daysInMonth + 2); // 2 for the previous month days
+            for (let i = 1; i <= remainingSlots; i++) {
+                let day = new Date(year, month + 1, i);
+                document.write(`
+                    <div class="grid-item next-month">
+                        <div class="day-number">${formatDay(i)}</div>
+                        <div class="day-name">${getDayName(day)}</div>
+                    </div>
+                `);
+            }
+        </script>
+    </div>
+</body>
+</html>
