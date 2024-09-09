@@ -68,24 +68,3 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleUnderline(); // Toggle underline on selected text
         }
     });
-
-    // Event listeners for button clicks
-    boldButton.addEventListener('click', () => {
-        toggleBold(); // Toggle bold on selected text
-    });
-
-    italicButton.addEventListener('click', () => {
-        toggleItalic(); // Toggle italics on selected text
-    });
-
-    underlineButton.addEventListener('click', () => {
-        toggleUnderline(); // Toggle underline on selected text
-    });
-
-    // Initial update of the button states based on selected text formatting
-    document.addEventListener('selectionchange', () => {
-        updateBoldButtonState();
-        updateItalicButtonState();
-        updateUnderlineButtonState();
-    });
-});
