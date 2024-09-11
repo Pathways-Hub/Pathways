@@ -32,12 +32,12 @@ body {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     padding: 20px;
-    transition: width 0.3s; /* Smooth transition for width change */
+    transition: width 0.3s, top 0.3s, height 0.3s; /* Smooth transition for width and position changes */
 }
 
 /* Sidebar logo */
 .sidebar-logo {
-    width: 100px; /* Adjusted smaller logo size */
+    width: 120px; /* Adjusted larger logo size */
     height: auto;
     position: absolute;
     top: 20px; /* Move closer to the corner */
@@ -52,6 +52,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     height: calc(100vh - 40px);
+    transition: margin-left 0.3s; /* Smooth transition for content area shift */
 }
 
 /* Button container */
@@ -59,6 +60,10 @@ body {
     display: flex;
     gap: 40px;
     margin-top: 30px;
+    flex-wrap: wrap; /* Allows buttons to wrap to the next line */
+    justify-content: center; /* Center the buttons on the page */
+    max-height: calc(100vh - 40px); /* Ensure container doesn't exceed viewport height */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
 }
 
 /* Button styling */
@@ -105,13 +110,65 @@ body {
 /* Sidebar hover effect */
 .sidebar:hover {
     width: 280px; /* Extended width on hover */
+    transition: width 0.3s ease; /* Ensure smooth transition */
 }
 
-/* Button container */
-.button-container {
-    display: flex;
-    gap: 40px;
-    margin-top: 30px;
-    flex-wrap: wrap; /* Allows buttons to wrap to the next line */
-    justify-content: center; /* Center the buttons on the page */
+/* Remove the white box space at the top */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Media Queries for responsive design */
+
+/* For tablets (screen width <= 768px) */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Full width */
+        height: 70px; /* Fixed height for header */
+        top: 0; /* Position at the top */
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px; /* Horizontal padding */
+        border-radius: 0; /* Remove rounded corners */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: add shadow for better visibility */
+    }
+
+    .sidebar-logo {
+        width: 180px; /* Increased logo size by about 50% for header */
+        left: 20px; /* Adjust left position */
+    }
+
+    .content {
+        margin-left: 0; /* Remove left margin */
+        margin-top: 70px; /* Add top margin to avoid overlap with header */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .button-container {
+        gap: 20px; /* Reduce gap between buttons */
+    }
+}
+
+/* For phones (screen width <= 480px) */
+@media (max-width: 480px) {
+    .sidebar {
+        height: 60px; /* Further reduced height for phones */
+        padding: 0 10px; /* Smaller horizontal padding */
+    }
+
+    .sidebar-logo {
+        width: 120px; /* Increased logo size by about 50% for phones */
+        left: 10px; /* Adjust left position */
+    }
+
+    .content {
+        padding: 5px; /* Adjust padding for even smaller screens */
+    }
+
+    .button-container {
+        gap: 10px; /* Further reduced gap between buttons */
+    }
 }
