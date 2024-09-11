@@ -7,8 +7,7 @@ body {
     background-color: white;
     font-family: Arial, sans-serif;
     position: relative;
-    overflow: hidden;
-    transition: background-image 0.3s;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Styling for the broken heart icon */
@@ -49,21 +48,20 @@ body {
     margin-left: 250px;
     padding: 20px;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: calc(100vh - 40px);
-    transition: margin-left 0.3s; /* Smooth transition for content area shift */
+    flex-direction: column; /* Ensure content stacks vertically */
+    align-items: center; /* Center content horizontally */
+    min-height: 100vh; /* Ensure content area is at least full viewport height */
+    box-sizing: border-box; /* Include padding in height calculation */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Button container */
 .button-container {
     display: flex;
     gap: 40px;
-    margin-top: 30px;
     flex-wrap: wrap; /* Allows buttons to wrap to the next line */
     justify-content: center; /* Center the buttons on the page */
-    max-height: calc(100vh - 40px); /* Ensure container doesn't exceed viewport height */
-    overflow-y: auto; /* Enable vertical scrolling if needed */
+    margin-top: 30px;
 }
 
 /* Button styling */
@@ -134,11 +132,11 @@ body, html {
         padding: 0 20px; /* Horizontal padding */
         border-radius: 0; /* Remove rounded corners */
         box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: add shadow for better visibility */
+        overflow: hidden; /* Ensure no overflow from the header */
     }
 
     .sidebar-logo {
         width: 180px; /* Increased logo size by about 50% for header */
-        left: 20px; /* Adjust left position */
     }
 
     .content {
@@ -161,7 +159,6 @@ body, html {
 
     .sidebar-logo {
         width: 120px; /* Increased logo size by about 50% for phones */
-        left: 10px; /* Adjust left position */
     }
 
     .content {
