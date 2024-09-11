@@ -3,22 +3,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const documentArea = document.querySelector('.document-area');
     const fontUploadBtn = document.getElementById('font-upload-btn');
 
-    // List of web fonts
+    // List of diverse fonts
     const fonts = [
-        'Arial', 'Courier New', 'Georgia', 'Times New Roman', 'Verdana',
-        'Roboto', 'Open Sans', 'Lobster', 'Montserrat', 'Lora',
-        'Oswald', 'Raleway', 'Poppins', 'Merriweather', 'Dancing Script',
-        'Playfair Display', 'Quicksand', 'Nunito', 'PT Serif', 'Source Sans Pro',
-        'Fira Sans', 'Ubuntu', 'Impact', 'Comic Sans MS'
+        { name: 'Arial', url: '' },
+        { name: 'Courier New', url: '' },
+        { name: 'Georgia', url: '' },
+        { name: 'Comic Sans MS', url: '' },
+        { name: 'Impact', url: '' },
+        { name: 'Lobster', url: 'https://fonts.googleapis.com/css2?family=Lobster&display=swap' },
+        { name: 'Pacifico', url: 'https://fonts.googleapis.com/css2?family=Pacifico&display=swap' },
+        { name: 'Indie Flower', url: 'https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap' },
+        { name: 'Montserrat', url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap' },
+        { name: 'Playfair Display', url: 'https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap' },
+        { name: 'Dancing Script', url: 'https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap' },
+        { name: 'Oswald', url: 'https://fonts.googleapis.com/css2?family=Oswald&display=swap' },
+        { name: 'Raleway', url: 'https://fonts.googleapis.com/css2?family=Raleway&display=swap' },
+        { name: 'Fira Sans', url: 'https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap' },
+        { name: 'Nunito', url: 'https://fonts.googleapis.com/css2?family=Nunito&display=swap' }
     ];
 
-    // Function to dynamically add fonts to the dropdown
+    // Function to dynamically add fonts to the dropdown and load the font's style
     function populateFontDropdown() {
         fonts.forEach(font => {
+            if (font.url) {
+                const link = document.createElement('link');
+                link.href = font.url;
+                link.rel = 'stylesheet';
+                document.head.appendChild(link);
+            }
+
             const option = document.createElement('option');
-            option.value = font;
-            option.textContent = font;
-            option.style.fontFamily = font;
+            option.value = font.name;
+            option.textContent = font.name;
+            option.style.fontFamily = font.name;
             option.style.fontSize = '14px'; // Adjust font size for better visibility
             fontDropdown.appendChild(option);
         });
@@ -56,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Add uploaded font to the dropdown
                         const fontName = 'CustomFont';
-                        fonts.push(fontName);
+                        fonts.push({ name: fontName, url: '' });
                         const option = document.createElement('option');
                         option.value = fontName;
                         option.textContent = fontName;
