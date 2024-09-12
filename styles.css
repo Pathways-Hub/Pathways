@@ -105,11 +105,12 @@ body {
     border-color: black; /* Change border color to black on hover */
 }
 
-/* Sidebar hover effect */
+/* Sidebar hover effect
 .sidebar:hover {
-    width: 280px; /* Extended width on hover */
-    transition: width 0.3s ease; /* Ensure smooth transition */
+    width: 280px;  Extended width on hover
+    transition: width 0.3s ease; Ensure smooth transition
 }
+*/
 
 /* Remove the white box space at the top */
 body, html {
