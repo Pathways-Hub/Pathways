@@ -28,22 +28,16 @@
             <i class="fa-solid fa-file-import"></i>
         </button>
 
-        <button id="bold-btn" class="iconbutton" title="Bold">
+        <button id="bold-btn" class="iconbutton" title="Bold (Ctrl+B)">
             <i class="fas fa-bold"></i>
         </button>
-        <button id="italic-btn" class="iconbutton" title="Italic">
+        <button id="italic-btn" class="iconbutton" title="Italic (Ctrl+I)">
             <i class="fas fa-italic"></i>
         </button>
-        <button id="underline-btn" class="iconbutton" title="Underline">
+        <button id="underline-btn" class="iconbutton" title="Underline (Ctrl+U)">
             <i class="fas fa-underline"></i>
-        </button>  
-        <button id="numbered-lines-btn" class="iconbutton" title="Numbered Lines">
-            <i class="fas fa-list-ol"></i>
         </button>
-        <button id="bullet-points-btn" class="iconbutton" title="Bullet Points">
-            <i class="fas fa-list-ul"></i>
-        </button>        
-        <button id="align-left-btn" class="iconbutton" title="Align Left">
+                <button id="align-left-btn" class="iconbutton" title="Align Left">
             <i class="fas fa-align-left"></i>
         </button>
         <button id="align-center-btn" class="iconbutton" title="Align Center">
@@ -52,6 +46,33 @@
         <button id="align-right-btn" class="iconbutton" title="Align Right">
             <i class="fas fa-align-right"></i>
         </button>
+        <button id="highlight-btn" class="iconbutton" title="Highlight Text">
+            <i class="fas fa-highlighter"></i>
+        </button>
+        <button id="numbered-lines-btn" class="iconbutton" title="Numbered Lines">
+            <i class="fas fa-list-ol"></i>
+        </button>
+        <button id="bullet-points-btn" class="iconbutton" title="Bullet Points">
+            <i class="fas fa-list-ul"></i>
+        </button>   
+        <button id="insert-table-btn" class="iconbutton" title="Insert Table">
+            <i class="fa-solid fa-table"></i>
+        </button>     
+        <button id="insert-image-btn" class="iconbutton" title="Insert Web Image">
+            <i class="fa-solid fa-globe"></i>
+        </button>
+        <button id="upload-image-btn" class="iconbutton" title="Insert File Image">
+            <i class="fa-solid fa-image"></i>
+        </button> 
+        <button id="up-arrow-btn" class="iconbutton" title="Font Up">
+            <i class="fa-solid fa-caret-up"></i>
+        </button>
+        <button id="down-arrow-btn" class="iconbutton" title="Font Down">
+            <i class="fa-solid fa-caret-down"></i>
+        </button>
+        <button id="export-btn" class="iconbutton" title="PDF Export">
+            <i class="fa-solid fa-download"></i>
+        </button>        
     </header>
 
     <div class="document-container">
@@ -68,12 +89,20 @@
 
     <div id="word-count">Words: 0</div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="documents/script.js"></script>
     <script src="documents/shortcuts.js"></script>
     <script src="documents/align.js"></script>
     <script src="documents/textFormatting.js"></script>
     <script src="documents/prefix.js"></script>
     <script src="documents/fontChange.js"></script>
+    <script src="documents/colour.js"></script>
+    <script src="documents/evo.js"></script>
+    <script src="documents/export.js"></script>
+    <script src="documents/tabletool.js"></script>
+    <script src="documents/imageInsert.js"></script>
+    <script src="documents/imagefile.js"></script>
+
     <script>
         const titleInput = document.getElementById('doc-title');
         titleInput.addEventListener('input', function() {
