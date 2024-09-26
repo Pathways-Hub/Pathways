@@ -1,70 +1,110 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const documentArea = document.querySelector('.document-area');
-    const boldButton = document.getElementById('bold-btn');
-    const italicButton = document.getElementById('italic-btn');
-    const underlineButton = document.getElementById('underline-btn');
+    const colorChangeButton = document.getElementById('color-change-btn');
+    const colorPicker = document.getElementById('text-color-picker');
+    const upArrowButton = document.getElementById('up-arrow-btn');
+    const downArrowButton = document.getElementById('down-arrow-btn');
 
-    // Toggle bold on the selected text and update the button's state
-    function toggleBold() {
-        document.execCommand('bold');
-        updateBoldButtonState();
-    }
+    // Toggle visibility of the color picker
+    colorChangeButton.addEventListener('click', () => {
+        colorPicker.style.display = (colorPicker.style.display === 'none' || colorPicker.style.display === '') ? 'block' : 'none';
+    });
 
-    // Toggle italics on the selected text and update the button's state
-    function toggleItalic() {
-        document.execCommand('italic');
-        updateItalicButtonState();
-    }
+    // Apply the selected color to the highlighted text
+    colorPicker.addEventListener('input', (e) => {
+        const selectedColor = e.target.value;
+        applyColorToSelection(selectedColor);
+    });
 
-    // Toggle underline on the selected text and update the button's state
-    function toggleUnderline() {
-        document.execCommand('underline');
-        updateUnderlineButtonState();
-    }
+    // Function to apply the selected color to the highlighted text
+    function applyColorToSelection(color) {
+        const selection = window.getSelection();
+        if (!selection.rangeCount) return;
 
-    // Update the button's active state based on current formatting
-    function updateBoldButtonState() {
-        const isBold = document.queryCommandState('bold');
-        if (isBold) {
-            boldButton.classList.add('active');
-        } else {
-            boldButton.classList.remove('active');
+        const range = selection.getRangeAt(0);
+        const selectedText = range.toString();
+
+        if (selectedText) {
+            const span = document.createElement('span');
+            span.style.color = color;
+            span.textContent = selectedText;
+
+            // Replace the selected text with the colored span
+            range.deleteContents();
+            range.insertNode(span);
         }
     }
 
-    function updateItalicButtonState() {
-        const isItalic = document.queryCommandState('italic');
-        if (isItalic) {
-            italicButton.classList.add('active');
-        } else {
-            italicButton.classList.remove('active');
+    // Function to change font size
+    function changeFontSize(increment) {
+        const selection = window.getSelection();
+        if (!selection.rangeCount) return;
+
+        const range = selection.getRangeAt(0);
+        const selectedText = range.toString();
+
+        if (selectedText) {
+            const parentElement = range.commonAncestorContainer.parentElement;
+
+            // Get the current font size from the selected text
+            const computedStyle = window.getComputedStyle(parentElement);
+            let currentFontSize = parseFloat(computedStyle.fontSize);
+
+            // Calculate the new font size with the increment, ensuring it doesn't go below 10px
+            let newFontSize = Math.max(currentFontSize + increment, 10);
+            
+            // Apply the new font size
+            parentElement.style.fontSize = `${newFontSize}px`;
         }
     }
 
-    function updateUnderlineButtonState() {
-        const isUnderline = document.queryCommandState('underline');
-        if (isUnderline) {
-            underlineButton.classList.add('active');
-        } else {
-            underlineButton.classList.remove('active');
+    // Function to highlight text
+    function highlightText() {
+        const selection = window.getSelection();
+        if (!selection.rangeCount) return;
+
+        const range = selection.getRangeAt(0);
+        const selectedText = range.toString();
+
+        if (selectedText) {
+            const span = document.createElement('span');
+            span.style.backgroundColor = 'yellow'; // Highlight color
+            span.textContent = selectedText;
+
+            // Check if already highlighted, if so, remove highlight
+            if (range.startContainer.parentElement.style.backgroundColor === 'yellow') {
+                range.startContainer.parentElement.style.backgroundColor = ''; // Remove highlight
+            } else {
+                // Replace the selected text with the highlighted span
+                range.deleteContents();
+                range.insertNode(span);
+            }
         }
     }
 
-    // Event listener for keyboard shortcuts (Ctrl+B, Ctrl+I, Ctrl+U)
-    documentArea.addEventListener('keydown', (e) => {
-        // Check if Ctrl + B is pressed for bold
-        if (e.ctrlKey && e.key === 'b') {
-            e.preventDefault(); // Prevent default action
-            toggleBold(); // Toggle bold on selected text
-        }
-        // Check if Ctrl + I is pressed for italics
-        if (e.ctrlKey && e.key === 'i') {
-            e.preventDefault(); // Prevent default action
-            toggleItalic(); // Toggle italics on selected text
-        }
-        // Check if Ctrl + U is pressed for underline
-        if (e.ctrlKey && e.key === 'u') {
-            e.preventDefault(); // Prevent default action
-            toggleUnderline(); // Toggle underline on selected text
+    // Event listeners for the up and down arrow buttons
+    upArrowButton.addEventListener('click', () => {
+        changeFontSize(2);  // Increase font size by 2px
+    });
+
+    downArrowButton.addEventListener('click', () => {
+        changeFontSize(-2); // Decrease font size by 2px
+    });
+
+    // Keyboard shortcuts for increasing, decreasing font size, and highlighting
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey) {
+            if (e.key === '=' || e.key === '+') {
+                e.preventDefault(); // Prevent default zoom action
+                changeFontSize(2);  // Increase font size by 2px
+            }
+            if (e.key === '-') {
+                e.preventDefault(); // Prevent default zoom action
+                changeFontSize(-2); // Decrease font size by 2px
+            }
+            if (e.key === 'h') {
+                e.preventDefault(); // Prevent default action
+                highlightText();     // Highlight text
+            }
         }
     });
+});
