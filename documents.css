@@ -154,3 +154,110 @@ header {
     font-size: 14px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
+
+.custom-table {
+    border-collapse: collapse;
+    width: auto; /* Set width to auto so it doesn't fill the page */
+    margin: 10px 0;
+}
+
+.custom-table td, .custom-table th {
+    border: 1px solid #ccc;
+    padding: 4px; /* Smaller padding to reduce cell size */
+    width: 50px; /* Fixed width for all cells */
+    height: 30px; /* Fixed height for all cells */
+    text-align: left;
+}
+
+.custom-table th {
+    background-color: #f2f2f2;
+}
+
+/* CSS for the image insertion */
+.resizable-image-wrapper {
+    display: inline-block;
+    position: relative;
+    margin-right: 10px; /* Space between the image and text */
+}
+
+/* Styles for the image */
+.resizable-image {
+    width: 500px; /* Default width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure image doesn't exceed document width */
+    display: block; /* Ensure the image is treated as a block-level element for resizing */
+    position: relative; /* To position the resize handle */
+}
+
+/* Handle for resizing */
+.resize-handle {
+    width: 16px;
+    height: 16px;
+    background: rgba(0, 0, 0, 0.3); /* Handle color */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize; /* Cursor to indicate resizing */
+    display: none; /* Hide handle by default */
+}
+
+/* Show the resize handle when hovering over the image */
+.resizable-image-wrapper:hover .resize-handle {
+    display: block; /* Show handle on hover */
+}
+
+.resizable-image-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%; /* Ensure the image wrapper doesn't exceed document width */
+}
+
+.resizable-image {
+    width: 500px; /* Default width */
+    height: auto; /* Default height */
+    display: block; /* Ensure it behaves like a block element */
+}
+
+.resize-handle {
+    width: 20px; /* Square width */
+    height: 20px; /* Square height */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize; /* Resize cursor */
+    display: none; /* Hide by default */
+    z-index: 10; /* Ensure it is above other content */
+}
+
+/* Additional styles for visible handle on hover */
+.resizable-image-wrapper:hover .resize-handle {
+    display: block;
+}
+
+/* Ensure the handle is not selectable */
+.resize-handle {
+    pointer-events: auto; /* Allow interaction with resize handle */
+}
+
+.document-area {
+    position: relative; /* Ensure this is positioned relative to handle properly */
+    z-index: 1; /* Ensure it is below the resize handle */
+}
+
+/* Container for color buttons */
+.color-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; /* Space between buttons */
+    height: 100%; /* Fill the rectangle */
+    align-content: flex-start; /* Align content to the top */
+}
+
+/* Style for individual color buttons */
+.color-button {
+    width: 40px; /* Width of each button */
+    height: 40px; /* Height of each button */
+    border: none;
+    cursor: pointer;
+}
