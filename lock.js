@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // Disable right-click on the page
+    document.addEventListener("contextmenu", function(event) {
+        event.preventDefault(); // Prevent the right-click menu from appearing
+    });
+
     // Create the lock screen container
     const lockScreen = document.createElement("div");
     lockScreen.style.position = "fixed";
@@ -27,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Create the message text elements
     const betaMessage = document.createElement("p");
-    betaMessage.innerText = "This website is currently in a closed beta state and is not currently open to the public";
+    betaMessage.innerText = "This website is currently in a beta state and not currently open to the public";
     betaMessage.style.fontSize = "18px";
     betaMessage.style.color = "black";
     betaMessage.style.margin = "0";
