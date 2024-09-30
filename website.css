@@ -1,0 +1,170 @@
+/* General body settings */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-image: url('website/backdrop.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keeps background fixed relative to the viewport */
+    height: auto; /* Allow the body height to grow with content */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Styling for the header */
+header {
+    width: 100%;
+    padding: 5px 40px; /* Minimal padding for a thin header */
+    background-color: #ffffff; /* White background */
+    display: flex;
+    align-items: center;
+    position: fixed; /* Change to fixed to keep it at the top */
+    top: 0;
+    left: 0; /* Ensure it starts from the left */
+    box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+    height: 40px; /* Make the header really thin */
+    z-index: 1000; /* Ensure header stays above other content */
+}
+
+/* Logo styling inside the header */
+.logo {
+    height: 25px; /* Adjust the size of the logo to fit the thin header */
+    margin-right: 20px; /* Add space between the logo and buttons */
+}
+
+/* Navigation styling */
+nav {
+    flex-grow: 1; /* Ensures the nav stretches to take up space */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.9rem; /* Slightly smaller font size to match the thin header */
+    font-weight: bold;
+}
+
+/* Center container for main content */
+.container {
+    text-align: center;
+    color: black;
+    margin-top: 350px; /* Adjusted content below the thinner header */
+}
+
+/* Restore original text size for 'Pave Your Way' */
+h1 {
+    font-size: 5rem; /* Restore original size */
+    margin: 0;
+}
+
+/* Restore original text size for 'with Pathways' */
+p {
+    font-size: 2rem; /* Restore original size */
+    margin: 0;
+}
+
+/* Button container styling */
+.button-container {
+    margin-top: 20px; /* Space between the text and buttons */
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    gap: 30px; /* Increased space between buttons */
+}
+
+/* Black button styling */
+.black-button {
+    background-color: #0583fe;
+    color: white;
+    border: none;
+    padding: 15px 40px; /* Increased padding for a squarer shape */
+    border-radius: 10px; /* Slightly rounded corners */
+    font-size: 1rem; /* Font size */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Transition effects */
+    display: flex; /* Use flexbox for aligning text and icon */
+    align-items: center; /* Center icons vertically */
+    justify-content: center; /* Center button content */
+}
+
+.black-button:hover {
+    background-color: #62b1ff; /* Darker shade on hover */
+}
+
+/* White button styling */
+.white-button {
+    background-color: #ebf5fe;
+    color: #087fe7;
+    border: 0px solid black; /* Black outline */
+    padding: 15px 40px; /* Increased padding for a squarer shape */
+    border-radius: 10px; /* Slightly rounded corners */
+    font-size: 1rem; /* Font size */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Transition effects */
+    display: flex; /* Use flexbox for aligning text and icon */
+    align-items: center; /* Center icons vertically */
+    justify-content: center; /* Center button content */
+}
+
+.white-button:hover {
+    background-color: #9ed2ff; /* Change background on hover */
+}
+
+/* New distinct section styling */
+.new-section {
+    background-color: white; /* White background for the new section */
+    height: 100vh; /* Adjust height for the new section */
+    display: flex; /* Flexbox for potential future content layout */
+    justify-content: center; /* Center any content horizontally */
+    align-items: center; /* Center any content vertically */
+    margin-top: 500px; /* Move the section down by 500px */
+}
+
+/* Ensure content stays responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 4rem; /* Smaller for mobile */
+    }
+    
+    p {
+        font-size: 1.5rem; /* Smaller for mobile */
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .black-button,
+    .white-button {
+        padding: 10px 25px; /* Adjust button padding for mobile */
+    }
+
+    .new-section {
+        padding: 20px 10px; /* Adjust padding for mobile if content is added */
+        height: auto; /* Adjust height for smaller screens */
+        margin-top: 500px; /* Ensure the new section remains down by 500px */
+    }
+}
+
+/* Icon styles */
+.black-button i {
+    margin-left: 10px; /* Space between text and icon */
+    color: white; /* Ensure icon is white for black button */
+}
+
+.white-button i {
+    margin-left: 10px; /* Space between text and icon */
+    color: #087fe7; /* Ensure icon is black for white button */
+}
