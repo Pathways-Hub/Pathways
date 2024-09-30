@@ -3,41 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pathways Hub</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="sidebar.css"> <!-- Include the new CSS file -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CDN -->
+    <title>Pathways</title>
+    <link rel="stylesheet" href="website.css">
     <link rel="icon" href="images/favicon.png" type="image/png">
+    <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="sidebar">
-        <img src="images/pathways light.png" alt="Pathways Logo" class="sidebar-logo">
-    </div>
-    <div class="content">
-        <div class="button-container">
-            <a href="newload.html" class="sidebar-button">
-                <img src="images/new_workspace.png" alt="New Workspace">
-                <p>Workspaces</p>
-            </a>
-            <a href="interfaces.html" class="sidebar-button">
-                <img src="images/new_interface.png" alt="New Interface">
-                <p>Interfaces</p>
-            </a>
-            <a href="calendar.html" class="sidebar-button">
-                <img src="images/new_calender.png" alt="New Calendar">
-                <p>Dates</p>
-            </a>
-            <a href="newdocument.html" class="sidebar-button">
-                <img src="images/new_pages.png" alt="New Pages">
-                <p>Papers</p>
-            </a>
-            <a href="#" class="sidebar-button">
-                <img src="images/settings.png" alt="Settings">
-                <p>Settings</p>
-            </a>
-        </div>
-    </div>
-    <script src="evo.js"></script>
-    <script src="lock.js"></script>
+
+<header>
+    <img src="images/pathwaystl.png" alt="Pathways Logo" class="logo">
+    <nav>
+        <ul class="nav-links">
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="hub.html">Hub</a></li> <!-- Hub button pointing to hub.html -->
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>Pave Your Way</h1>
+    <p>with Pathways</p>
+    <div class="button-container">
+        <button class="black-button" id="newWorkspace" onclick="window.location.href='#';">
+            Get Started <i class="fa-solid fa-rocket"></i>
+        </button>
+        <button class="white-button">
+            Learn More <i class="fa-solid fa-book"></i>
+        </button>
+    </div>    
+</div>
+
+<!-- New section below -->
+<div class="new-section">
+    <!-- Additional content can be added here -->
+</div>
+
 </body>
 </html>
