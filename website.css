@@ -125,11 +125,11 @@ p {
 /* New distinct section styling */
 .new-section {
     background-color: white; /* White background for the new section */
-    height: 100vh; /* Adjust height for the new section */
+    height: 125vh; /* Adjust height for the new section */
     display: flex; /* Flexbox for potential future content layout */
     justify-content: center; /* Center any content horizontally */
     align-items: center; /* Center any content vertically */
-    margin-top: 500px; /* Move the section down by 500px */
+    margin-top: 150px; /* Reduced from 500px to 200px to bring it closer to the top */
 }
 
 /* Ensure content stays responsive */
@@ -168,3 +168,58 @@ p {
     margin-left: 10px; /* Space between text and icon */
     color: #087fe7; /* Ensure icon is black for white button */
 }
+
+/* Styling for the new sectionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn */
+.new-section {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 500px;
+    padding: 50px 20px;
+}
+
+/* Title styling for the new section */
+.new-section h2 {
+    font-size: 3rem;
+    color: black; /* Make the title black */
+    margin-bottom: 60px; /* Add more space under the title */
+    text-align: center;
+}
+
+/* Styling for the tool block (image, title, and description) */
+.tool {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+    text-align: left; /* Align text to the left */
+    margin-bottom: 60px; /* Add space between tool sections */
+    width: 80%; /* Make sure the entire block is centered within the page */
+    max-width: 1200px; /* Set a maximum width for the entire block */
+}
+
+/* Smaller image size and more space between image and text */
+.tool img {
+    width: 200px; /* Smaller image size */
+    height: auto;
+    border-radius: 10px; /* Rounded corners for the image */
+    margin-right: 40px; /* More space between image and text */
+}
+
+.tool-text {
+    max-width: 500px; /* Limit text width */
+}
+
+.tool h3 {
+    font-size: 1.5rem; /* Smaller title for the tool */
+    color: black; /* Make the smaller title black */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.tool p {
+    font-size: 1rem; /* Smaller text for the description */
+    color: #333; /* Slightly gray text for description */
+}
+
