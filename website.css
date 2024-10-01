@@ -15,7 +15,7 @@ body {
 /* Styling for the header */
 header {
     width: 100%;
-    padding: 5px 40px; /* Minimal padding for a thin header */
+    padding: 5px 20px; /* Minimal padding for a thin header */
     background-color: #ffffff; /* White background */
     display: flex;
     align-items: center;
