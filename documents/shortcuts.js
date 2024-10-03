@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const colorPicker = document.getElementById('text-color-picker');
     const upArrowButton = document.getElementById('up-arrow-btn');
     const downArrowButton = document.getElementById('down-arrow-btn');
+    const indentButton = document.getElementById('indent-btn');
+    const unIndentButton = document.getElementById('unindent-btn'); // New un-indent button
 
     // Toggle visibility of the color picker
     colorChangeButton.addEventListener('click', () => {
@@ -90,7 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
         changeFontSize(-2); // Decrease font size by 2px
     });
 
-    // Keyboard shortcuts for increasing, decreasing font size, and highlighting
+    // Function to indent text
+    indentButton.addEventListener('click', () => {
+        document.execCommand('indent');
+    });
+
+    // Function to un-indent text
+    unIndentButton.addEventListener('click', () => {
+        document.execCommand('outdent');
+    });
+
+    // Keyboard shortcuts for increasing, decreasing font size, indenting, and highlighting
     document.addEventListener('keydown', (e) => {
         if (e.ctrlKey) {
             if (e.key === '=' || e.key === '+') {
@@ -105,6 +117,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault(); // Prevent default action
                 highlightText();     // Highlight text
             }
+            if (e.key === ']') {
+                e.preventDefault(); // Prevent default action
+                document.execCommand('indent');  // Indent text
+            }
+            if (e.key === '[') {
+                e.preventDefault(); // Prevent default action
+                document.execCommand('outdent'); // Un-indent text
+            }
+        }
+    });
+
+    // Add event listener for the Tab key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            e.preventDefault();  // Prevent the default Tab behavior (focusing the next element)
+            document.execCommand('indent');  // Indent text at the cursor position
         }
     });
 });
