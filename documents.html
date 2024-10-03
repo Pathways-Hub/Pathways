@@ -8,6 +8,34 @@
     <link rel="stylesheet" href="documents.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="images/favicon.png" type="image/png">
+    <style>
+        /* Styling for the header */
+        header {
+            position: relative;
+        }
+
+        /* Positioning for color picker */
+        #text-color-picker {
+            display: none;
+            position: absolute;
+            top: 50px; /* Adjust this to move the picker below the button */
+            left: 200px; /* Adjust for picker alignment */
+            z-index: 100; /* Ensure it's above other content */
+        }
+
+        /* Button styling for minimal spacing */
+        .iconbutton {
+            margin: 0 0px; /* Reduced margin for tighter grouping */
+        }
+
+        /* Add a vertical line separator */
+        .vertical-separator {
+            border-left: 1px solid black;
+            height: 24px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -28,6 +56,8 @@
             <i class="fa-solid fa-file-import"></i>
         </button>
 
+        <div class="vertical-separator"></div>
+
         <button id="bold-btn" class="iconbutton" title="Bold (Ctrl+B)">
             <i class="fas fa-bold"></i>
         </button>
@@ -37,7 +67,7 @@
         <button id="underline-btn" class="iconbutton" title="Underline (Ctrl+U)">
             <i class="fas fa-underline"></i>
         </button>
-                <button id="align-left-btn" class="iconbutton" title="Align Left">
+        <button id="align-left-btn" class="iconbutton" title="Align Left">
             <i class="fas fa-align-left"></i>
         </button>
         <button id="align-center-btn" class="iconbutton" title="Align Center">
@@ -46,21 +76,69 @@
         <button id="align-right-btn" class="iconbutton" title="Align Right">
             <i class="fas fa-align-right"></i>
         </button>
+
+        <div class="vertical-separator"></div>
+
+        <button id="up-arrow-btn" class="iconbutton" title="Font Up">
+            <i class="fa-solid fa-caret-up"></i>
+        </button>
+        <button id="down-arrow-btn" class="iconbutton" title="Font Down">
+            <i class="fa-solid fa-caret-down"></i>
+        </button>
+        <!-- Color Change Button -->
+        <button id="color-change-btn" class="iconbutton" title="Change Color">
+            <i class="fas fa-palette"></i>
+        </button>
+
+        <!-- Hidden Color Picker -->
+        <input type="color" id="text-color-picker">
+
+        <!-- Highlight Button -->
+        <button id="highlight-btn" class="iconbutton" title="Highlight Text">
+            <i class="fas fa-highlighter"></i>
+        </button>
+
+        <div class="vertical-separator"></div>
+
         <button id="numbered-lines-btn" class="iconbutton" title="Numbered Lines">
             <i class="fas fa-list-ol"></i>
         </button>
         <button id="bullet-points-btn" class="iconbutton" title="Bullet Points">
             <i class="fas fa-list-ul"></i>
-        </button>   
+        </button>
+        <!-- Indent and Un-indent Buttons -->
+        <button id="unindent-btn" class="iconbutton" title="Un-indent">
+            <i class="fas fa-outdent"></i>
+        </button>
+        <button id="indent-btn" class="iconbutton" title="Indent">
+            <i class="fas fa-indent"></i>
+        </button>
+
+        <div class="vertical-separator"></div>
+
+        <!-- Insert Table Button -->
+        <button id="insert-table-btn" class="iconbutton" title="Insert Table">
+            <i class="fa-solid fa-table"></i>
+        </button>     
         <button id="insert-image-btn" class="iconbutton" title="Insert Web Image">
             <i class="fa-solid fa-globe"></i>
         </button>
         <button id="upload-image-btn" class="iconbutton" title="Insert File Image">
             <i class="fa-solid fa-image"></i>
         </button> 
+
+        <div class="vertical-separator"></div>
+
         <button id="export-btn" class="iconbutton" title="PDF Export">
             <i class="fa-solid fa-download"></i>
-        </button>        
+        </button> 
+        <!-- Save and Load Buttons -->
+        <button id="save-btn" class="iconbutton" title="Save Document">
+            <i class="fa-solid fa-floppy-disk"></i>
+        </button>
+        <button id="load-btn" class="iconbutton" title="Load Document">
+            <i class="fa-solid fa-folder-open"></i>
+        </button>
     </header>
 
     <div class="document-container">
@@ -95,6 +173,18 @@
         const titleInput = document.getElementById('doc-title');
         titleInput.addEventListener('input', function() {
             document.title = titleInput.value || 'Untitled Document';
+        });
+
+        const colorChangeButton = document.getElementById('color-change-btn');
+        const colorPicker = document.getElementById('text-color-picker');
+
+        // Show the color picker when the color change button is clicked
+        colorChangeButton.addEventListener('click', () => {
+            if (colorPicker.style.display === 'none' || colorPicker.style.display === '') {
+                colorPicker.style.display = 'block'; // Show the color picker
+            } else {
+                colorPicker.style.display = 'none'; // Hide the color picker if clicked again
+            }
         });
     </script>
 </body>
