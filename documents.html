@@ -35,6 +35,11 @@
             margin-left: 10px;
             margin-right: 10px;
         }
+
+        /* Hide the delete button on the first page */
+        .document-editor:first-child .delete-page-btn {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -146,6 +151,7 @@
             <div class="document-editor">
                 <div class="document-area" contenteditable="true"></div>
                 <div class="page-number">Page 1</div>
+                <button class="delete-page-btn">Delete Page</button>
             </div>
         </div>
         <button id="add-page" class="iconbutton">
