@@ -5,11 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const underlineButton = document.getElementById('underline-btn');
     const wordCountDisplay = document.getElementById('word-count');
     const addPageButton = document.getElementById('add-page');
+    const pagesContainer = document.querySelector('.pages-container');
 
     // Improved word count function (similar to Google Docs logic)
     function updateWordCount() {
         let text = documentArea.innerHTML;
-        
+
         // Replace <br> with a space to preserve word boundaries from line breaks
         text = text.replace(/<br\s*\/?>/gi, ' ');
 
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Handle special non-visible characters and ensure they are not counted
         text = text.replace(/&nbsp;/g, ' ');  // Non-breaking space to normal space
         text = text.replace(/\u200B/g, '');   // Remove zero-width space
-        
+
         // Split words by space or newlines and remove empty strings
         const words = text.trim().split(/\s+/).filter(word => word.length > 0);
 
@@ -75,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateWordCount();
     }
 
+    // Add page functionality
     function addPage() {
         const pageNumber = document.querySelectorAll('.document-editor').length + 1;
         const newPage = document.createElement('div');
@@ -82,11 +84,43 @@ document.addEventListener('DOMContentLoaded', () => {
         newPage.innerHTML = `
             <div class="document-area" contenteditable="true"></div>
             <div class="page-number">Page ${pageNumber}</div>
+            <button class="delete-page-btn">Delete Page</button>
         `;
-        document.querySelector('.pages-container').appendChild(newPage);
+        pagesContainer.appendChild(newPage);
         updateWordCount();
+        updatePageNumbers();
+        setupPageDeleteButton(newPage);
     }
 
+    // Delete page functionality
+    function setupPageDeleteButton(pageElement) {
+        const deleteButton = pageElement.querySelector('.delete-page-btn');
+        deleteButton.addEventListener('click', () => {
+            if (pagesContainer.children.length > 1) {
+                pagesContainer.removeChild(pageElement);
+                updatePageNumbers();
+            }
+        });
+    }
+
+    // Update page numbers and ensure first page can't be deleted
+    function updatePageNumbers() {
+        const pages = document.querySelectorAll('.document-editor');
+        pages.forEach((page, index) => {
+            const pageNumberElement = page.querySelector('.page-number');
+            pageNumberElement.textContent = `Page ${index + 1}`;
+            
+            // Hide delete button on the first page
+            const deleteButton = page.querySelector('.delete-page-btn');
+            if (index === 0) {
+                deleteButton.style.display = 'none';
+            } else {
+                deleteButton.style.display = 'block';
+            }
+        });
+    }
+
+    // Event listeners for text formatting buttons
     boldButton.addEventListener('click', () => {
         toggleBold();
     });
@@ -103,15 +137,21 @@ document.addEventListener('DOMContentLoaded', () => {
         addPage();
     });
 
+    // Monitor for changes to text selection to update formatting button states
     document.addEventListener('selectionchange', () => {
         updateBoldButtonState();
         updateItalicButtonState();
         updateUnderlineButtonState();
     });
 
+    // Update word count and handle text input
     documentArea.addEventListener('input', handleInput);
     documentArea.addEventListener('keydown', handleKeyDown);
 
+    // Initialize delete buttons on any existing pages
+    document.querySelectorAll('.document-editor').forEach(setupPageDeleteButton);
+
     // Initial word count update
     updateWordCount();
+    updatePageNumbers();
 });
