@@ -2,10 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const documentArea = document.querySelector('.document-area');
     const insertImageButton = document.getElementById('insert-image-btn');
 
-    function insertImage() {
-        // Prompt user for the image URL
-        const imageUrl = prompt('Enter the URL of the image you want to insert:');
-
+    function insertImage(imageUrl) {
         if (imageUrl) {
             // Create a wrapper div with a resizable class
             const imgWrapper = document.createElement('div');
@@ -42,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add resizing functionality
             makeResizable(imgWrapper);
 
-            // Update word count after image insertion
+            // Update word count after image insertion (if you have such functionality)
             updateWordCount();
         }
     }
@@ -51,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const resizer = element.querySelector('.resize-handle');
         const img = element.querySelector('img');
 
-        let startX, startY, startWidth, startHeight;
+        let startX, startY, startWidth, startHeight, aspectRatio;
 
         resizer.addEventListener('mousedown', (e) => {
             e.preventDefault();
@@ -60,13 +57,25 @@ document.addEventListener('DOMContentLoaded', () => {
             startWidth = parseInt(document.defaultView.getComputedStyle(img).width, 10);
             startHeight = parseInt(document.defaultView.getComputedStyle(img).height, 10);
 
+            // Calculate the aspect ratio (width / height)
+            aspectRatio = startWidth / startHeight;
+
             document.addEventListener('mousemove', onMouseMove);
             document.addEventListener('mouseup', onMouseUp);
         });
 
         function onMouseMove(e) {
-            img.style.width = `${startWidth + e.clientX - startX}px`;
-            img.style.height = `${startHeight + e.clientY - startY}px`;
+            let newWidth = startWidth + e.clientX - startX;
+            let newHeight = startHeight + e.clientY - startY;
+
+            // If Shift key is pressed, maintain the aspect ratio
+            if (e.shiftKey) {
+                newHeight = newWidth / aspectRatio; // Adjust height based on aspect ratio
+            }
+
+            // Apply the new width and height to the image
+            img.style.width = `${newWidth}px`;
+            img.style.height = `${newHeight}px`;
         }
 
         function onMouseUp() {
@@ -75,5 +84,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    insertImageButton.addEventListener('click', insertImage);
+    // Image URL insertion button functionality
+    insertImageButton.addEventListener('click', () => {
+        const imageUrl = prompt('Enter the URL of the image you want to insert:');
+        insertImage(imageUrl);
+    });
+
+    // Handle paste event for copied images
+    documentArea.addEventListener('paste', (event) => {
+        const clipboardItems = event.clipboardData.items;
+        for (let i = 0; i < clipboardItems.length; i++) {
+            const item = clipboardItems[i];
+
+            if (item.type.indexOf("image") !== -1) {
+                const blob = item.getAsFile();
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    insertImage(e.target.result); // Insert the copied image as base64
+                };
+                reader.readAsDataURL(blob); // Convert the image to a base64 string
+                event.preventDefault(); // Prevent default paste behavior for images
+            }
+        }
+    });
 });
