@@ -261,3 +261,35 @@ header {
     border: none;
     cursor: pointer;
 }
+
+/* Custom table styles */
+.custom-table {
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+.custom-table td {
+    border: 1px solid black; /* Thicker border for table cells */
+    padding: 5px;
+}
+
+/* Hide the delete button on the first page */
+.document-editor:first-child .delete-page-btn {
+    display: none;
+}
+
+/* Style for the delete page button */
+.delete-page-btn {
+    background-color: #ff4d4d; /* Red color for delete button */
+    color: white; /* White text color */
+    border: none; /* No border */
+    padding: 5px 10px; /* Padding for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: -7px; /* Adjust margin for spacing (reduced to move it further up) */
+}
+
+/* Change delete button color on hover */
+.delete-page-btn:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
