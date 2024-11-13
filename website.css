@@ -19,11 +19,11 @@ header {
     background-color: #ffffff; /* White background */
     display: flex;
     align-items: center;
-    position: fixed; /* Change to fixed to keep it at the top */
+    position: fixed; /* Keeps header at the top */
     top: 0;
     left: 0; /* Ensure it starts from the left */
     box-sizing: border-box; /* Ensures padding doesn't affect overall width */
-    height: 40px; /* Make the header really thin */
+    height: 40px; /* Keep the header thin */
     z-index: 1000; /* Ensure header stays above other content */
 }
 
@@ -41,20 +41,53 @@ nav {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 20px; /* Space between links */
     padding: 0;
     margin: 0;
 }
 
 .nav-links li {
-    display: inline;
+    display: inline; /* Keep links inline */
 }
 
 .nav-links a {
     text-decoration: none;
-    color: black;
-    font-size: 0.9rem; /* Slightly smaller font size to match the thin header */
-    font-weight: bold;
+    color: black; /* Link color */
+    font-size: 0.9rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text for links */
+}
+
+/* Dropdown styling */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border: 1px solid #ddd;
+}
+
+.dropdown-content li {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #333; /* Link color in dropdown */
+    padding: 10px; /* Padding for dropdown items */
+    text-decoration: none; /* No underline */
+    display: block;
+    font-size: 14px; /* Font size for dropdown links */
+    font-weight: bold; /* Bold dropdown links */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* Background color on hover */
+}
+
+/* Show dropdown on hover */
+.nav-links li:hover .dropdown-content {
+    display: block; /* Show dropdown on hover */
 }
 
 /* Center container for main content */
@@ -86,13 +119,13 @@ p {
 
 /* Black button styling */
 .black-button {
-    background-color: #0583fe;
-    color: white;
-    border: none;
+    background-color: #0583fe; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
     padding: 15px 40px; /* Increased padding for a squarer shape */
     border-radius: 10px; /* Slightly rounded corners */
     font-size: 1rem; /* Font size */
-    cursor: pointer;
+    cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.3s, color 0.3s; /* Transition effects */
     display: flex; /* Use flexbox for aligning text and icon */
     align-items: center; /* Center icons vertically */
@@ -105,13 +138,13 @@ p {
 
 /* White button styling */
 .white-button {
-    background-color: #ebf5fe;
-    color: #087fe7;
-    border: 0px solid black; /* Black outline */
+    background-color: #ebf5fe; /* Button color */
+    color: #087fe7; /* Text color */
+    border: 0px solid black; /* No outline */
     padding: 15px 40px; /* Increased padding for a squarer shape */
     border-radius: 10px; /* Slightly rounded corners */
     font-size: 1rem; /* Font size */
-    cursor: pointer;
+    cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.3s, color 0.3s; /* Transition effects */
     display: flex; /* Use flexbox for aligning text and icon */
     align-items: center; /* Center icons vertically */
@@ -143,7 +176,7 @@ p {
     }
 
     .nav-links {
-        gap: 10px;
+        gap: 10px; /* Reduced gap for smaller screens */
     }
 
     .black-button,
@@ -169,42 +202,42 @@ p {
     color: #087fe7; /* Ensure icon is black for white button */
 }
 
-/* Styling for the new sectionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn */
+/* Additional styles for the new section */
 .new-section {
-    background-color: white;
+    background-color: white; /* White background */
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 500px;
-    padding: 50px 20px;
+    flex-direction: column; /* Column layout */
+    justify-content: center; /* Center content */
+    align-items: center; /* Center content */
+    margin-top: 500px; /* Space from the top */
+    padding: 50px 20px; /* Padding */
 }
 
 /* Title styling for the new section */
 .new-section h2 {
-    font-size: 3rem;
-    color: black; /* Make the title black */
-    margin-bottom: 60px; /* Add more space under the title */
-    text-align: center;
+    font-size: 3rem; /* Title size */
+    color: black; /* Black title */
+    margin-bottom: 60px; /* Space under the title */
+    text-align: center; /* Center title */
 }
 
 /* Styling for the tool block (image, title, and description) */
 .tool {
     display: flex;
-    align-items: center;
-    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
     text-align: left; /* Align text to the left */
-    margin-bottom: 60px; /* Add space between tool sections */
-    width: 80%; /* Make sure the entire block is centered within the page */
-    max-width: 1200px; /* Set a maximum width for the entire block */
+    margin-bottom: 60px; /* Space between sections */
+    width: 80%; /* Width control */
+    max-width: 1200px; /* Max width */
 }
 
 /* Smaller image size and more space between image and text */
 .tool img {
-    width: 200px; /* Smaller image size */
-    height: auto;
-    border-radius: 10px; /* Rounded corners for the image */
-    margin-right: 40px; /* More space between image and text */
+    width: 200px; /* Image size */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners */
+    margin-right: 40px; /* Space between image and text */
 }
 
 .tool-text {
@@ -212,14 +245,13 @@ p {
 }
 
 .tool h3 {
-    font-size: 1.5rem; /* Smaller title for the tool */
-    color: black; /* Make the smaller title black */
-    margin-top: 0;
-    margin-bottom: 10px;
+    font-size: 1.5rem; /* Tool title size */
+    color: black; /* Black color */
+    margin-top: 0; /* No margin */
+    margin-bottom: 10px; /* Space below */
 }
 
 .tool p {
-    font-size: 1rem; /* Smaller text for the description */
-    color: #333; /* Slightly gray text for description */
+    font-size: 1rem; /* Description size */
+    color: #333; /* Slightly gray text */
 }
-
