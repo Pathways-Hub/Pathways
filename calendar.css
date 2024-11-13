@@ -1,116 +1,158 @@
-@font-face {
-    font-family: 'OstrichLight';
-    src: url('fonts/OstrichReg.ttf') format('truetype');
-}
-
-body, html {
-    height: 100%;
+/* General Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
-    background-color: #ffffff; /* Background color */
-    display: flex;
-    flex-direction: column;
-    overflow: hidden; /* Prevent scrolling */
-}
-
-.header1 {
-    background-color: #1C1C1C; /* Slightly darker gray for header1 */
-    padding: 0; /* No padding */
-    height: 10px; /* Set height to 10px */
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Space between the buttons */
-    padding: 0 10px; /* Padding on sides for spacing buttons */
-}
-
-.header2 {
-    background-color: #0D0C0C; /* Dark header color */
-    padding: 4vw; /* Larger padding for header2 */
-    text-align: right; /* Align text to the right */
-    position: relative;
-}
-
-.date {
-    font-family: 'OstrichLight', Arial, sans-serif; /* Use custom font */
-    font-size: 4vw; /* Font size for date */
-    color: #ffffff; /* Date color */
-    position: absolute;
-    bottom: 0; /* Position at the bottom of the header */
-    right: 0; /* Align to the right */
-    margin: 0.5vw; /* Margin for better spacing */
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 columns */
-    grid-template-rows: repeat(5, 1fr); /* 5 rows */
-    flex: 1;
-    width: 100%;
-    border: 1px solid #0D0C0C; /* Same color as the header */
-    border-top: none; /* Remove top border to align with the header */
-}
-
-.grid-item {
-    border: 1px solid #0D0C0C; /* Same color as the header */
-    background-color: transparent;
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    position: relative; /* Positioning context for day number */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.grid-item:hover {
-    background-color: #e0e0e0; /* Light gray background on hover */
-}
-
-.day-number {
-    position: absolute;
-    top: 0.5vw;
-    left: 0.5vw;
-    font-family: Arial, sans-serif;
-    font-size: 1vw; /* Smaller font size */
-    color: #0D0C0C;
-}
-
-.day-name {
-    position: absolute;
-    top: 2vw; /* Position below the day number */
-    left: 0.5vw;
-    font-family: Arial, sans-serif;
-    font-size: 0.8vw; /* Slightly smaller font size for day names */
-    color: #0D0C0C;
-}
-
-.prev-month, .next-month {
-    background-color: #dbdbdb; /* Gray out previous and next month days */
-    color: #666666; /* Slightly lighter gray for the text */
-}
-
-.current-date .day-number, .current-date .day-name {
-    font-weight: bold; /* Make the current date text bold */
-    color: #F44A01; /* Same color as the big text in the header */
-}
-
-.nav-button {
-    background-color: transparent;
-    border: none;
-    color: #FFFFFF; /* White color for icons */
-    font-size: 16px; /* Size of the arrows */
-    cursor: pointer;
     padding: 0;
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 60px; /* For the fixed header */
+}
+
+/* Header Styles */
+header {
+    width: 100%;
+    padding: 5px 20px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 40px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+/* Logo styling */
+.logo {
+    height: 25px;
+    margin-right: 20px;
+}
+
+/* Navigation styles */
+.nav-links {
+    list-style: none;
     margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.nav-button:focus {
-    outline: none; /* Remove outline on focus */
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold; /* Bold text for the navigation links */
+    padding: 8px;
+    transition: color 0.3s;
 }
 
-.nav-button#last {
-    font-size: 12px; /* Size of the left arrow */
+.nav-links a:hover {
+    color: #000;
 }
 
-.nav-button#next {
-    font-size: 12px;
+/* Dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border: 1px solid #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content li {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    font-weight: bold; /* Bold dropdown links */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Content Styling */
+.content {
+    display: flex;
+    align-items: flex-start;
+    padding: 40px; /* Added padding around the content */
+    gap: 100px; /* Space between text and image */
+    margin-top: 100px;
+    width: 100%;
+}
+
+/* Text Section */
+.text-section {
+    max-width: 450px;
+    padding-right: 40px; /* Additional space between text and the edge */
+}
+
+/* Title Styling */
+.text-section h1 {
+    font-size: 64px; /* Bigger title */
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Description Text */
+.text-section p {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Download Link Styling */
+.download-link {
+    display: inline-block;
+    background-color: #ebf5fe; /* Light blue background */
+    color: #087fe7; /* Blue text */
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
+    margin-bottom: 10px; /* Space between buttons */
+}
+
+.download-link i {
+    margin-right: 8px;
+}
+
+.download-link:hover {
+    background-color: #d7ebfd;
+    color: #005bb5;
+}
+
+/* Image Section */
+.image-section {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+}
+
+.example-image {
+    width: 125%; /* Larger image going off the right side */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
