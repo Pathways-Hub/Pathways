@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Pathways</title>
+    <link rel="stylesheet" href="website.css"> <!-- Main website styling (header, etc.) -->
+    <link rel="stylesheet" href="login.css"> <!-- Separate CSS file for the login page -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header (reused from main page) -->
+    <header>
+        <a href="index.html"><img src="images/Pathwaystl.png" alt="Logo" class="logo"/></a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="price.html">Pricing</a></li>
+                <li><a href="hub.html">Hub</a></li> 
+                <li><a href="about.html">About</a></li> 
+                <li class="dropdown">
+                    <a href="#">Download <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Workspaces</a></li>
+                        <li><a href="#">Interfaces</a></li>
+                        <li><a href="calendar.html">Dates</a></li>
+                        <li><a href="#">Papers</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Login Form Section -->
+    <div class="login-container">
+        <h2 id="form-title">Login to Pathways <i class="fa-solid fa-person-biking"></i></h2>
+        <form action="login_process.html" method="post" class="login-form" id="auth-form">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <!-- Additional fields for sign-up, hidden initially -->
+            <div id="signup-fields" style="display: none;">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+
+            <button type="submit" class="login-button" id="submit-button">Login</button>
+        </form>
+        <p class="toggle-text">
+            Don't have an account? <a href="#" id="toggle-signup">Sign up here</a>.
+        </p>
+        <p class="toggle-text" id="toggle-login" style="display: none;">
+            Already have an account? <a href="#" id="toggle-login-back">Log in here</a>.
+        </p>
+    </div>
+
+    <script>
+        // JavaScript to toggle between login and signup views
+        document.getElementById("toggle-signup").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            // Show the sign-up fields
+            const signupFields = document.getElementById("signup-fields");
+            const formTitle = document.getElementById("form-title");
+            const submitButton = document.getElementById("submit-button");
+            const toggleText = document.querySelector(".toggle-text");
+            const toggleLoginText = document.getElementById("toggle-login");
+
+            // Hide the login-related elements and show the sign-up elements
+            signupFields.style.display = "block";
+            formTitle.textContent = "Sign Up for Pathways" ;
+            submitButton.textContent = "Sign Up";
+            toggleText.style.display = "none"; // Hide "Don't have an account?"
+            toggleLoginText.style.display = "block"; // Show "Already have an account?"
+
+        });
+
+        document.getElementById("toggle-login-back").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            // Hide the sign-up fields and show the login fields
+            const signupFields = document.getElementById("signup-fields");
+            const formTitle = document.getElementById("form-title");
+            const submitButton = document.getElementById("submit-button");
+            const toggleText = document.querySelector(".toggle-text");
+            const toggleLoginText = document.getElementById("toggle-login");
+
+            signupFields.style.display = "none"; // Hide sign-up fields
+            formTitle.textContent = "Login to Pathways";
+            submitButton.textContent = "Login";
+            toggleText.style.display = "block"; // Show "Don't have an account?"
+            toggleLoginText.style.display = "none"; // Hide "Already have an account?"
+        });
+    </script>
+
+</body>
+</html>
