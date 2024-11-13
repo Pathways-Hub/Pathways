@@ -3,85 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pathway's Calendar</title>
+    <title>Pathway's Dates - Download</title>
     <link rel="stylesheet" href="calendar.css">
-    <link rel="icon" href="images/favicon.png" type="image/png"> <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Font Open Sans -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
 </head>
 <body>
-    <div class="header1">
-        <!-- Navigation buttons -->
-        <button id="last" class="nav-button">&#9664;</button> <!-- Left arrow -->
-        <button id="next" class="nav-button">&#9654;</button> <!-- Right arrow -->
-    </div> <!-- Shorter header with navigation buttons -->
-    <div class="header2">
-        <div class="date">
-            <script>
-                // Display the current abbreviated day and date
-                function formatDate() {
-                    const options = { weekday: 'short', day: '2-digit' };
-                    const date = new Date().toLocaleDateString('en-US', options);
-                    return date.replace(',', ''); // Remove comma to format correctly
-                }
-                document.write(formatDate());
-            </script>
+
+    <!-- Header Section -->
+    <header>
+        <a href="index.html"><img src="images/Pathwaystl.png" alt="Logo" class="logo"/></a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="price.html">Pricing</a></li>
+                <li><a href="hub.html">Hub</a></li> 
+                <li><a href="about.html">About</a></li> 
+                <li class="dropdown">
+                    <a href="#">Download <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Workspaces</a></li>
+                        <li><a href="#">Interfaces</a></li>
+                        <li><a href="calendar.html">Dates</a></li>
+                        <li><a href="#">Papers</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="content">
+        <!-- Text Section -->
+        <div class="text-section">
+            <h1>Pathway's Dates</h1>
+            <p>Organize. Plan. Achieve.</p>
+
+            <!-- Download Buttons -->
+            <a href="pathways-dates-download.zip" class="download-link">
+                <i class="fa-brands fa-windows"></i> Download for Windows
+            </a>
+            <a href="pathways-dates-download.zip" class="download-link">
+                <i class="fa-brands fa-apple"></i> Download for macOS
+            </a>
+            <a href="pathways-dates-download.zip" class="download-link">
+                <i class="fa-brands fa-android"></i> Download for Android
+            </a>
         </div>
-    </div>
-    <div class="grid-container">
-        <script>
-            const date = new Date();
-            const year = date.getFullYear();
-            const month = date.getMonth();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            const daysInPrevMonth = new Date(year, month, 0).getDate();
-            const today = date.getDate(); // Current day of the month
 
-            // Function to get day abbreviation
-            function getDayName(date) {
-                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-                return days[date.getDay()];
-            }
-
-            // Function to format day with leading zero if needed
-            function formatDay(day) {
-                return day < 10 ? `0${day}` : day;
-            }
-
-            // Add the last two days of the previous month
-            for (let i = daysInPrevMonth - 1; i <= daysInPrevMonth; i++) {
-                let day = new Date(year, month - 1, i);
-                let isToday = day.getDate() === today ? ' current-date' : '';
-                document.write(`
-                    <div class="grid-item prev-month${isToday}">
-                        <div class="day-number">${formatDay(i)}</div>
-                        <div class="day-name">${getDayName(day)}</div>
-                    </div>
-                `);
-            }
-
-            // Add the days of the current month
-            for (let i = 1; i <= daysInMonth; i++) {
-                let day = new Date(year, month, i);
-                let isToday = day.getDate() === today ? ' current-date' : '';
-                document.write(`
-                    <div class="grid-item${isToday}">
-                        <div class="day-number">${formatDay(i)}</div>
-                        <div class="day-name">${getDayName(day)}</div>
-                    </div>
-                `);
-            }
-
-            // Add the first few days of the next month to fill the grid
-            const remainingSlots = 35 - (daysInMonth + 2); // 2 for the previous month days
-            for (let i = 1; i <= remainingSlots; i++) {
-                let day = new Date(year, month + 1, i);
-                document.write(`
-                    <div class="grid-item next-month">
-                        <div class="day-number">${formatDay(i)}</div>
-                        <div class="day-name">${getDayName(day)}</div>
-                    </div>
-                `);
-            }
-        </script>
+        <!-- Image Section -->
+        <div class="image-section">
+            <img src="https://t4.ftcdn.net/jpg/02/39/25/87/360_F_239258741_1KpdKyWZi465dcnZgc3ssfXZgW1GMUbE.jpg" alt="Pathways Dates Preview" class="example-image">
+        </div>
     </div>
 </body>
 </html>
