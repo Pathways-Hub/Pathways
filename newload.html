@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <a href="hub.html"><img src="images/Pathwaystl.png" alt="Logo" class="logo" /></a>
-        <p>Pathway's <strong>Workspace</strong></p>
+        <p>Pathway's <strong>Workspaces</strong> <i class="fa-solid fa-pen"></i></p>
         <button id="newWorkspace" onclick="window.location.href='workspaces.html';">
             <i class="fas fa-plus"></i> New Workspace
         </button>
@@ -23,6 +23,14 @@
     </div>
 
     <script>
+        function setResponsiveBackground() {
+            // Set the background image as a style attribute for responsive behavior
+            document.body.style.backgroundImage = "url('Workspace/images/wb.png')";
+            document.body.style.backgroundSize = "cover"; // Cover the whole background
+            document.body.style.backgroundPosition = "center"; // Center the image
+            document.body.style.backgroundRepeat = "no-repeat"; // Avoid repeating
+        }
+
         function loadFile(event) {
             const file = event.target.files[0];
             if (file) {
@@ -30,6 +38,12 @@
                 // Handle the file as needed
             }
         }
+
+        // Call setResponsiveBackground on load
+        setResponsiveBackground();
+
+        // Optional: Call it again on resize if you'd like it to be responsive to screen resizing
+        window.onresize = setResponsiveBackground;
     </script>
 </body>
 </html>
