@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <a href="hub.html"><img src="images/Pathwaystl.png" alt="Logo" class="logo" /></a>
-        <p>Pathway's <strong>Papers</strong></p>
+        <p>Pathway's <strong>Papers</strong> <i class="fa-solid fa-file-lines"></i></p>
         <button id="newWorkspace" onclick="window.location.href='documents.html';">
             <i class="fa-solid fa-file"></i> New Document
         </button>
@@ -23,7 +23,15 @@
         <input type="file" id="fileInput" accept=".txt" style="display:none;" onchange="loadFile(event)">
     </div>
 
-    <script>
+ <script>
+        function setResponsiveBackground() {
+            // Set the background image as a style attribute for responsive behavior
+            document.body.style.backgroundImage = "url('documents/pb.png')";
+            document.body.style.backgroundSize = "cover"; // Cover the whole background
+            document.body.style.backgroundPosition = "center"; // Center the image
+            document.body.style.backgroundRepeat = "no-repeat"; // Avoid repeating
+        }
+
         function loadFile(event) {
             const file = event.target.files[0];
             if (file) {
@@ -31,6 +39,12 @@
                 // Handle the file as needed
             }
         }
+
+        // Call setResponsiveBackground on load
+        setResponsiveBackground();
+
+        // Optional: Call it again on resize if you'd like it to be responsive to screen resizing
+        window.onresize = setResponsiveBackground;
     </script>
 </body>
 </html>
