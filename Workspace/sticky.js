@@ -1,10 +1,10 @@
-// sticky.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const stickyButton = document.getElementById('stickynote');
     const deleteButton = document.getElementById('binButton'); // Assuming this is the delete button
+    const paintBucketButton = document.getElementById('paintBucketButton'); // Color button
     let isStickyNoteActive = false;
     let currentlySelectedStickyNote = null; // Track the currently selected sticky note
+    let currentColorIndex = 0; // To cycle through colors
 
     // Array of colors for the sticky notes, with soft yellow as the most common
     const colors = [
@@ -13,10 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         '#90EE90', // Soft Green
         '#F5F5F5', // Off White
         '#FFFF99', // Harsher Soft Yellow
-        '#FFFF99', // Harsher Soft Yellow
-        '#FFFF99', // Harsher Soft Yellow
-        '#FFFF99', // Harsher Soft Yellow
-        '#FFFF99'  // Harsher Soft Yellow
     ];
 
     // Function to create a sticky note
@@ -166,6 +162,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentlySelectedStickyNote) {
             currentlySelectedStickyNote.remove();
             currentlySelectedStickyNote = null; // Clear the selected sticky note reference
+        }
+    });
+
+    // Event listener for the color button (paint bucket)
+    paintBucketButton.addEventListener('click', () => {
+        if (currentlySelectedStickyNote) {
+            // Cycle to the next color in the array
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+            currentlySelectedStickyNote.style.backgroundColor = colors[currentColorIndex];
         }
     });
 
