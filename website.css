@@ -158,11 +158,17 @@ p {
 /* New distinct section styling */
 .new-section {
     background-color: white; /* White background for the new section */
-    height: 125vh; /* Adjust height for the new section */
+    height: 160vh; /* Adjust height for the new section */
     display: flex; /* Flexbox for potential future content layout */
     justify-content: center; /* Center any content horizontally */
     align-items: center; /* Center any content vertically */
     margin-top: 150px; /* Reduced from 500px to 200px to bring it closer to the top */
+}
+
+.trusted-text {
+    text-align: center; /* Center the main text */
+    font-size: 2rem; /* Adjust as needed */
+    margin-bottom: 5px; /* Reduce the margin between the large text and the small text */
 }
 
 /* Ensure content stays responsive */
@@ -254,4 +260,24 @@ p {
 .tool p {
     font-size: 1rem; /* Description size */
     color: #333; /* Slightly gray text */
+}
+
+.highlight-blue {
+    color: #0583fe; /* Replace with your desired shade of blue */
+    font-weight: bold; /* Optional: makes the text stand out */
+}
+
+/* Styling for the user count banner */
+.user-count-banner {
+    text-align: center;
+    margin: 30px 0; /* Adds margin above and below the banner */
+}
+
+.user-count-image {
+    width: 100%; /* Stretches the image to fill the container */
+    height: 150px; /* Set the desired height */
+    object-fit: cover; /* Ensures the image fills the area, cropping excess horizontally */
+    display: block;
+    margin: 0 auto; /* Centers the image */
+    border-radius: 15px; /* Curves the corners */
 }
