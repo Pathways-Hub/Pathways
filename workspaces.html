@@ -15,10 +15,10 @@
             <a href="hub.html"><img src="images/Pathwaystl.png" alt="Logo" id="headerImage" style="width: 100px; height: auto;" /></a>
             <input type="text" class="editable-title" value="Untitled Workspace" />
             <button class="icon-button" id="hideHeaderButton" title="Header Toggle">
-                <i class="fas fa-lock"></i>
-            <button id="information" class="icon-button" title="Information">
+            <i class="fas fa-lock"></i>
+            <button id="information" class="icon-button" title="Information" onclick="window.location.href='infom.html';">
                 <i class="fa-solid fa-circle-info"></i>
-            </button>
+            </button>                
             </button>
             <button class="icon-button" id="gridToggleButton" title="Grid Toggle">
                 <i class="fa-regular fa-rectangle-xmark"></i>
@@ -32,7 +32,10 @@
             <button class="icon-button" id="lineToolButton" title="Line Tool">
                 <i class="fas fa-slash"></i>
             </button>
-            <button id="photoImportButton" class="icon-button" title=" Web Photo Import">
+            <button class="icon-button" id="squareToolButton" title="Square Tool">
+                <i class="fa-regular fa-square"></i>
+            </button>
+            <button id="photoImportButton" class="icon-button" title="Web Photo Import">
                 <i class="fas fa-globe"></i>
             </button>
             <button id="photoButton" class="icon-button" title="Photo Import">
@@ -58,7 +61,7 @@
             </button>
             <button id="progress" class="icon-button" title="Progress">
                 <i class="fa-solid fa-circle-half-stroke"></i>
-            </button>
+            </button>          
             <!-- New icon buttons for Save and Load next to the logo -->
             <button id="export" class="icon-button" title="Export">
                 <i class="fas fa-share"></i>
@@ -89,6 +92,8 @@
     <script src="Workspace/saveload.js"></script>
     <script src="Workspace/export.js"></script> <!-- Add the export.js script here -->
     <script src="Workspace/open.js"></script>
+    <script src="Workspace/square.js"></script>
+
     <script src="website/mobsup.js"></script>
 
     <!-- Script to handle page title updates -->
