@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         table.style.borderCollapse = 'collapse';
         table.style.position = 'absolute';
         table.style.border = '1px solid black';
-        table.style.width = `${columns * 60}px`;  // Prevent resizing on selection
-        table.style.height = `${rows * 40}px`;   // Prevent resizing on selection
+        table.style.width = `${columns * 60}px`;
+        table.style.height = `${rows * 40}px`;
 
         for (let i = 0; i < rows; i++) {
             const tr = document.createElement('tr');
@@ -57,13 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
         controlButton.innerHTML = '<i class="fa-solid fa-up-down-left-right"></i>';
         controlButton.style.position = 'absolute';
         controlButton.style.zIndex = '1002';
+        controlButton.style.display = 'none'; // Initially hidden
         controlButton.classList.add('icon-button', 'table-control-button');
         document.body.appendChild(controlButton);
 
         function updateControlButtonPosition() {
             const tableRect = table.getBoundingClientRect();
             controlButton.style.left = `${tableRect.left + window.scrollX}px`;
-            controlButton.style.top = `${tableRect.top + window.scrollY - 35}px`;  // Adjusted position to be higher
+            controlButton.style.top = `${tableRect.top + window.scrollY - 35}px`;
         }
 
         updateControlButtonPosition();
@@ -72,6 +73,25 @@ document.addEventListener('DOMContentLoaded', () => {
         makeSelectable(table, controlButton);
 
         window.addEventListener('scroll', updateControlButtonPosition);
+
+        // Show/hide control button based on proximity
+        document.addEventListener('mousemove', (e) => {
+            const tableRect = table.getBoundingClientRect();
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            const proximity = 50; // Extended proximity area
+            if (
+                mouseX >= tableRect.left - proximity &&
+                mouseX <= tableRect.right + proximity &&
+                mouseY >= tableRect.top - proximity &&
+                mouseY <= tableRect.bottom + proximity
+            ) {
+                controlButton.style.display = 'block';
+            } else {
+                controlButton.style.display = 'none';
+            }
+        });
 
         // Handle removal of table and control button
         function removeTableAndButton() {
