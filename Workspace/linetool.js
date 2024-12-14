@@ -38,12 +38,19 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleMouseDown(e) {
         const { x, y } = getMousePos(e);
 
+        // Reset selection unless clicking a line
+        let clickedLine = false;
+
         for (let line of lines) {
             if (line.points.length === 2) {
                 // Check if clicked on an endpoint
                 for (let i = 0; i < line.points.length; i++) {
                     if (isInsideCircle(x, y, line.points[i])) {
                         draggingPoint = { line, pointIndex: i };
+                        line.selected = true; // Select the line
+                        selectedLine = line;
+                        clickedLine = true;
+                        drawScene();
                         return;
                     }
                 }
@@ -52,12 +59,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 const midPoint = getMidPoint(line.points[0], line.points[1]);
                 if (isInsideRect(x, y, midPoint)) {
                     draggingLine = line;
-                    selectedLine = line; // Mark the line as selected
-                    line.selected = true; // Set the selected flag to true
+                    line.selected = true; // Select the line
+                    selectedLine = line;
+                    clickedLine = true;
                     drawScene();
                     return;
                 }
             }
+        }
+
+        // If no line was clicked, clear selection
+        if (!clickedLine) {
+            clearSelection();
+            drawScene();
         }
 
         // Start a new line if none is being interacted with
@@ -129,6 +143,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 ctx.fillStyle = "blue";
                 ctx.fillRect(midPoint.x - rectSize / 2, midPoint.y - rectSize / 2, rectSize, rectSize);
             }
+        }
+    }
+
+    function clearSelection() {
+        selectedLine = null;
+        for (let line of lines) {
+            line.selected = false; // Unselect all lines
         }
     }
 
