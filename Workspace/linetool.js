@@ -15,8 +15,40 @@ document.addEventListener("DOMContentLoaded", () => {
     let draggingLine = null;
     let selectedLine = null; // The line currently selected for deletion
 
+    // Colors for the color tool
+    const colors = ["black", "red", "blue", "green", "orange", "purple"];
+    let currentColorIndex = 0; // Start with the first color
+
+    // Create the information popup
+    const infoPopup = document.createElement("div");
+    infoPopup.style.position = "fixed";
+    infoPopup.style.bottom = "20px";
+    infoPopup.style.left = "50%";
+    infoPopup.style.transform = "translateX(-50%)";
+    infoPopup.style.backgroundColor = "grey";
+    infoPopup.style.color = "white";
+    infoPopup.style.padding = "10px 20px";
+    infoPopup.style.borderRadius = "5px";
+    infoPopup.style.fontFamily = "Arial, sans-serif";
+    infoPopup.style.fontSize = "14px";
+    infoPopup.style.textAlign = "center";
+    infoPopup.style.display = "none"; // Initially hidden
+    infoPopup.innerHTML = `
+        <strong>Information</strong><br>
+        Please select two points to create your line.
+    `;
+    document.body.appendChild(infoPopup);
+
+    function showInfoPopup() {
+        infoPopup.style.display = "block";
+    }
+
+    function hideInfoPopup() {
+        infoPopup.style.display = "none";
+    }
+
     document.getElementById("lineToolButton").addEventListener("click", () => {
-        currentLine = { points: [], near: false, selected: false };
+        currentLine = { points: [], near: false, selected: false, color: colors[currentColorIndex] };
         lines.push(currentLine);
         draggingPoint = null;
         draggingLine = null;
@@ -24,6 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
         canvas.addEventListener("mousedown", handleMouseDown);
         canvas.addEventListener("mousemove", handleMouseMove);
         canvas.addEventListener("mouseup", handleMouseUp);
+
+        // Show the information popup
+        showInfoPopup();
     });
 
     document.getElementById("binButton").addEventListener("click", () => {
@@ -33,6 +68,18 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedLine = null; // Clear the selection
             drawScene();
         }
+    });
+
+    document.getElementById("paintBucketButton").addEventListener("click", () => {
+        // Cycle through the colors
+        currentColorIndex = (currentColorIndex + 1) % colors.length;
+
+        if (selectedLine) {
+            // Apply the current color to the selected line
+            selectedLine.color = colors[currentColorIndex];
+        }
+
+        drawScene();
     });
 
     function handleMouseDown(e) {
@@ -77,8 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
         // Start a new line if none is being interacted with
         if (currentLine && currentLine.points.length < 2) {
             currentLine.points.push({ x, y });
+
+            // Hide the popup if the line is complete
             if (currentLine.points.length === 2) {
                 currentLine = null; // Reset current line once two points are set
+                hideInfoPopup();
             }
         }
     }
@@ -123,12 +173,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const midPoint = getMidPoint(line.points[0], line.points[1]);
 
-            // Draw the line
+            // Draw the red border for selected lines
+            if (line.selected) {
+                ctx.beginPath();
+                ctx.moveTo(line.points[0].x, line.points[0].y);
+                ctx.lineTo(line.points[1].x, line.points[1].y);
+                ctx.strokeStyle = "red";
+                ctx.lineWidth = 4; // Border width
+                ctx.stroke();
+            }
+
+            // Draw the main line
             ctx.beginPath();
             ctx.moveTo(line.points[0].x, line.points[0].y);
             ctx.lineTo(line.points[1].x, line.points[1].y);
-            ctx.strokeStyle = line.selected ? "red" : "black"; // Highlight the selected line in red
-            ctx.lineWidth = 2;
+            ctx.strokeStyle = line.color || "black"; // Use the line's color
+            ctx.lineWidth = 2; // Main line width
             ctx.stroke();
 
             // Draw the points and midpoint only if near the line
