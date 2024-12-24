@@ -1,0 +1,22 @@
+.long-button {
+    display: block;
+    width: calc(100% - 20px); /* Full width minus padding */
+    margin: 10px; /* Add spacing around the button */
+    padding: 8px 10px; /* Add padding inside the button */
+    background-color: #f9f9f9; /* Off-white color to match the sidebar */
+    color: #000; /* Black text */
+    border: 1px solid black; /* Thin black border */
+    border-radius: 5px; /* Slightly curved corners */
+    text-align: left; /* Align text to the left */
+    font-family: Arial, sans-serif; /* Consistent font */
+    font-size: 16px; /* Adjust font size */
+    cursor: pointer; /* Pointer cursor for button */
+    outline: none; /* Remove focus outline */
+    box-shadow: none; /* No shadow */
+}
+
+/* Apply this style to the content-editable area */
+.content-editable {
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow-x: auto; /* Allows horizontal scrolling if the text overflows */
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled Interface</title>
+    <link rel="stylesheet" href="interfaces.css">
+    <link rel="stylesheet" href="interfaces/elements.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Include Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="interfaces/control.js" defer></script>
+</head>
+<body>
+    <div class="left-sidebar">
+        <!-- First Section (Top Half) -->
+        <div class="top-half">
+            <!-- Logo -->
+            <a href="hub.html">
+                <img src="images/Pathwaystl.png" alt="Logo" id="headerImage" />
+            </a>
+            <!-- Editable title input -->
+            <input type="text" 
+                   class="editable-title" 
+                   value="Untitled Interface" 
+                   oninput="updateTitle(this)" />
+            <!-- Long button -->
+            <button class="long-button">Text</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Phone-like rectangle in the center of the edit space -->
+        <div class="device" id="device">
+            <!-- Device content goes here -->
+        </div>
+    </div>
+
+    <div class="right-sidebar">
+        <!-- Top buttons -->
+        <div class="top-buttons">
+            <button class="top-button">
+                <i class="fa-solid fa-gear"></i>
+            </button>
+            <a href="infom.html" class="top-button">
+                <i class="fa-solid fa-info"></i>
+            </a>
+        </div>
+        <!-- Bottom buttons -->
+        <div class="bottom-buttons">
+            <button id="fit-button" class="zoom-button">
+                <i class="fa-solid fa-arrows-up-down"></i>
+            </button>
+            <button id="zoom-in" class="zoom-button">+</button>
+            <div id="zoom-percentage">100%</div>
+            <button id="zoom-out" class="zoom-button">-</button>
+            <button id="reset-button" class="zoom-button">
+                <i class="fa-solid fa-arrows-rotate"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="interfaces/text.js" defer></script>
+    <script src="interfaces/format.js" defer></script>
+</body>
+</html>

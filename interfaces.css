@@ -1,0 +1,114 @@
+body {
+  margin: 0;
+  display: flex;
+  background-color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.left-sidebar {
+  width: 500px;
+  background-color: #f9f9f9; /* Light gray color */
+  height: 100vh;
+  position: relative;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#headerImage {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.editable-title {
+  margin: 0 10px;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  color: #333;
+  font-family: Arial, sans-serif;
+  outline: none;
+  padding: 0;
+  width: calc(100% - 20px);
+}
+
+.content {
+  flex: 1;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden; /* Prevent scrolling within content */
+  position: relative;
+}
+
+.device {
+  width: 375px;
+  height: 667px;
+  background-color: white;
+  border: 1px solid black;
+  transition: transform 0.3s ease; /* Smooth transition for zoom */
+  position: absolute; /* Allows it to be moved around */
+  cursor: move; /* Indicates it can be dragged */
+}
+
+.right-sidebar {
+  width: 40px; /* Adjusted width for better button placement */
+  background-color: #f9f9f9; /* Same color as the left sidebar */
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align items to the top */
+  align-items: center;
+  padding-top: 0px; /* Spacing at the top */
+  padding-bottom: 10px; /* Reduced bottom padding */
+}
+
+.right-sidebar .top-buttons {
+  margin-bottom: 15px; /* Reduced margin between top buttons and bottom buttons */
+}
+
+.right-sidebar .bottom-buttons {
+  margin-top: auto; /* Pushes bottom buttons to the bottom */
+}
+
+.top-button {
+  width: 30px; /* Button width */
+  height: 30px; /* Button height */
+  font-size: 15px; /* Icon font size */
+  background-color: transparent; /* No background */
+  border: none; /* No border */
+  margin: 5px 0; /* Margin between buttons */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zoom-button {
+  width: 30px; /* Adjusted width for the icon size */
+  height: 30px; /* Adjusted height for the icon size */
+  font-size: 15px; /* Font size */
+  font-weight: bold; /* Make text bold */
+  background-color: transparent; /* No background */
+  border: none; /* No border */
+  margin: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#zoom-percentage {
+  font-size: 12px; /* Smaller font size */
+  font-weight: bold; /* Make text bold */
+  margin-top: 10px; /* Spacing between percentage and buttons */
+  margin-bottom: 10px; /* Spacing between percentage and buttons */
+  text-align: center; /* Center the percentage text */
+  display: block;
+}
