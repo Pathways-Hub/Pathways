@@ -82,6 +82,21 @@ document.addEventListener("DOMContentLoaded", () => {
         drawScene();
     });
 
+    let shiftKeyPressed = false;
+
+    // Track the state of the Shift key
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "Shift") {
+            shiftKeyPressed = true;
+        }
+    });
+
+    window.addEventListener("keyup", (e) => {
+        if (e.key === "Shift") {
+            shiftKeyPressed = false;
+        }
+    });
+
     function handleMouseDown(e) {
         const { x, y } = getMousePos(e);
 
@@ -140,14 +155,30 @@ document.addEventListener("DOMContentLoaded", () => {
             // Move the dragged endpoint
             draggingPoint.line.points[draggingPoint.pointIndex] = { x, y };
         } else if (draggingLine) {
-            // Move the whole line
+            // Move the whole line or bend it if shift is pressed
             const dx = x - getMidPoint(draggingLine.points[0], draggingLine.points[1]).x;
             const dy = y - getMidPoint(draggingLine.points[0], draggingLine.points[1]).y;
 
-            draggingLine.points[0].x += dx;
-            draggingLine.points[0].y += dy;
-            draggingLine.points[1].x += dx;
-            draggingLine.points[1].y += dy;
+            if (shiftKeyPressed) {
+                // Bend the line by adjusting the control point
+                const midPoint = getMidPoint(draggingLine.points[0], draggingLine.points[1]);
+                const bendFactor = dy / 100; // Control how much the line bends
+
+                // Create a curved line using Bezier control point adjustment
+                const controlPoint = {
+                    x: midPoint.x,
+                    y: midPoint.y + bendFactor * 100, // Bending the line by moving the control point vertically
+                };
+
+                // Store the updated control point in the line's properties for use in drawing
+                draggingLine.controlPoint = controlPoint;
+            } else {
+                // Move the line as usual
+                draggingLine.points[0].x += dx;
+                draggingLine.points[0].y += dy;
+                draggingLine.points[1].x += dx;
+                draggingLine.points[1].y += dy;
+            }
         } else {
             // Check proximity to lines
             for (let line of lines) {
@@ -183,13 +214,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 ctx.stroke();
             }
 
-            // Draw the main line
-            ctx.beginPath();
-            ctx.moveTo(line.points[0].x, line.points[0].y);
-            ctx.lineTo(line.points[1].x, line.points[1].y);
-            ctx.strokeStyle = line.color || "black"; // Use the line's color
-            ctx.lineWidth = 2; // Main line width
-            ctx.stroke();
+            // If the line has a control point (indicating it's a curve), draw the curve
+            if (line.controlPoint) {
+                ctx.beginPath();
+                ctx.moveTo(line.points[0].x, line.points[0].y);
+                ctx.quadraticCurveTo(line.controlPoint.x, line.controlPoint.y, line.points[1].x, line.points[1].y);
+                ctx.strokeStyle = line.color || "black"; // Use the line's color
+                ctx.lineWidth = 2; // Main line width
+                ctx.stroke();
+            } else {
+                // Draw a straight line if no control point is set
+                ctx.beginPath();
+                ctx.moveTo(line.points[0].x, line.points[0].y);
+                ctx.lineTo(line.points[1].x, line.points[1].y);
+                ctx.strokeStyle = line.color || "black"; // Use the line's color
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
 
             // Draw the points and midpoint only if near the line
             if (line.near || line.selected) {
@@ -224,32 +265,24 @@ document.addEventListener("DOMContentLoaded", () => {
     function isInsideCircle(x, y, point) {
         const dx = x - point.x;
         const dy = y - point.y;
-        return Math.sqrt(dx * dx + dy * dy) <= circleRadius;
+        return dx * dx + dy * dy <= circleRadius * circleRadius;
     }
 
-    function isInsideRect(x, y, rectCenter) {
-        return (
-            x >= rectCenter.x - rectSize / 2 &&
-            x <= rectCenter.x + rectSize / 2 &&
-            y >= rectCenter.y - rectSize / 2 &&
-            y <= rectCenter.y + rectSize / 2
-        );
+    function isInsideRect(x, y, point) {
+        const dx = x - point.x;
+        const dy = y - point.y;
+        return Math.abs(dx) <= rectSize / 2 && Math.abs(dy) <= rectSize / 2;
     }
 
-    function getMidPoint(p1, p2) {
+    function isNearLine(x, y, p0, p1) {
+        const distance = Math.abs((p1.y - p0.y) * x - (p1.x - p0.x) * y + p1.x * p0.y - p1.y * p0.x) / Math.sqrt((p1.y - p0.y) ** 2 + (p1.x - p0.x) ** 2);
+        return distance < proximityThreshold;
+    }
+
+    function getMidPoint(p0, p1) {
         return {
-            x: (p1.x + p2.x) / 2,
-            y: (p1.y + p2.y) / 2,
+            x: (p0.x + p1.x) / 2,
+            y: (p0.y + p1.y) / 2,
         };
-    }
-
-    function isNearLine(x, y, p1, p2) {
-        // Calculate the distance from the point to the line
-        const a = p2.y - p1.y;
-        const b = p1.x - p2.x;
-        const c = p2.x * p1.y - p1.x * p2.y;
-
-        const distance = Math.abs(a * x + b * y + c) / Math.sqrt(a * a + b * b);
-        return distance <= proximityThreshold;
     }
 });
