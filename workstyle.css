@@ -465,3 +465,144 @@ body.dark-mode #curved-menu {
 body.dark-mode #headerImage {
     content: url('images/pathways light.png');
 }
+
+/* Account Dropdown Styles */
+.account-dropdown-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px; /* Adjust for spacing */
+}
+
+#accountButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: inherit;
+}
+
+.account-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1000;
+    min-width: 150px;
+}
+
+.account-dropdown a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.account-dropdown a:hover {
+    background-color: #f5f5f5;
+}
+
+.account-dropdown-container:hover .account-dropdown {
+    display: block;
+}
+
+/* Greyed-out background */
+#popupOverlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent grey */
+    z-index: 9999; /* Ensure the overlay is on top of everything */
+}
+
+/* Popup container */
+#popupContainer {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 500px; /* Increased width */
+    height: 550px; /* Increased height for more space */
+    border-radius: 20px;
+    z-index: 10000; /* Ensure the popup is on top of everything */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: left; /* Align content to the left */
+    overflow: hidden; /* Ensures the video aligns perfectly */
+}
+
+/* Video section */
+#popupVideo {
+    width: 100%;
+    height: 270px; /* Adjusted to maintain proper aspect ratio */
+    object-fit: cover; /* Makes sure the video covers the area */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: block;
+}
+
+/* Title section */
+#popupTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px;
+    text-align: left; /* Align title to the left */
+}
+
+/* New description text styling */
+#popupDescription {
+    font-size: 1rem;
+    margin-top: 10px; /* Add some space between title and description */
+    margin-left: 20px; /* Space from the left edge */
+    margin-right: 20px; /* Space from the right edge */
+    color: #333; /* Slightly darker color for readability */
+    text-align: left; /* Align the description to the left */
+}
+
+/* Button container */
+#popupButtons {
+    margin-top: 20px; /* Decreased margin for more compact design */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Decreased space between buttons */
+    align-items: flex-start; /* Align the buttons to the left */
+    margin-left: 20px; /* Add space from the left edge */
+}
+
+/* Individual buttons */
+.popupButton {
+    display: flex;
+    align-items: center;
+    background-color: #ebf5fe;
+    color: #087fe7;
+    padding: 7px 10px; /* Smaller padding */
+    border-radius: 5px; /* Slight curve */
+    text-decoration: none;
+    font-size: 0.9rem; /* Smaller font size */
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    width: 45%; /* Reduced button width to half */
+    justify-content: flex-start; /* Align text to the left */
+}
+
+/* Align the icon to the left and add some space between the text */
+.popupButton i {
+    margin-right: 10px;
+}
+
+/* Hover effect for buttons */
+.popupButton:hover {
+    background-color: #d7ebfd;
+    color: #005bb5;
+}
+
+/* Hover effect for icons */
+.popupButton:hover i {
+    color: #005bb5;
+}
