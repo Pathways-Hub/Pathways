@@ -20,7 +20,7 @@ header {
     top: 0; /* Align to the top */
     left: 0; /* Align to the left */
     width: 100%; /* Full width */
-    background-color: #f0f0f0; /* Light gray background */
+    background-color: #ffffff; /* Light gray background */
     padding: 5px 10px; /* Padding inside the header */
     z-index: 1002; /* Ensure header is above other content */
     box-sizing: border-box; /* Include padding in width/height calculations */
@@ -33,7 +33,7 @@ header {
 
 /* Hidden state for header */
 .header-hidden {
-    transform: translateY(-100%); /* Move header out of view */
+    transform: translateY(0%); /* Move header out of view */
 }
 
 /* Header title styling */
@@ -55,6 +55,11 @@ header h1 {
     outline: none; /* Remove focus outline */
     padding: 0; /* No padding */
 }
+/* Change text color to off-white in dark mode */
+body.dark-mode .editable-title {
+    color: #f0f0f0; /* Off-white color */
+}
+
 
 /* Grid and hide header button styling */
 .grid-toggle-button, .hide-header-button {
@@ -217,7 +222,7 @@ header h1 {
 
 /* Hover effect for icon button */
 .icon-button:hover {
-    background-color: #d3d3d3; /* Light gray background on hover */
+    color: rgb(136, 136, 136); /* Black icon color */
 }
 
 /* Container for blue icon buttons */
@@ -408,3 +413,55 @@ header h1 {
     padding: 0; /* Remove any extra padding */
 }
 
+/* Container for the brush button and other buttons on the right */
+.brush-button-container {
+    display: flex; /* Use flexbox for horizontal alignment */
+    gap: px; /* Add space between the buttons */
+    margin-left: auto; /* Push this container to the far right */
+    align-items: center; /* Align buttons vertically within the header */
+}
+
+/* Buttons styling (optional for customization) */
+#brushButton, #export, #save, #load {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#brushButton:hover, #export:hover, #save:hover, #load:hover {
+    background-color: #e6e6e6;
+}
+
+/* General body styling */
+body.light-mode {
+    background-color: white; /* Light background for light mode */
+    color: black; /* Text color in light mode */
+}
+
+body.dark-mode {
+    background-color: #121212; /* Dark background for dark mode */
+    color: white; /* Text color in dark mode */
+}
+
+
+/* Icon button styles for light and dark mode */
+body.light-mode .icon-button {
+    color: rgb(0, 0, 0); /* Dark icon color in light mode */
+}
+
+body.dark-mode .icon-button {
+    color: rgb(255, 255, 255); /* Light icon color in dark mode */
+}
+
+/* Menu Text Styling to ensure it does not change in dark mode */
+#curved-menu {
+    color: black; /* Make sure menu text stays black regardless of mode */
+}
+
+body.dark-mode #curved-menu {
+    color: black; /* Prevent menu text from turning white in dark mode */
+}
+
+/* Change logo when dark mode is enabled */
+body.dark-mode #headerImage {
+    content: url('images/pathways light.png');
+}
