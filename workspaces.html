@@ -10,75 +10,72 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-    <header id="header">
-        <div class="toggle-button-container">
-            <a href="hub.html"><img src="images/Pathwaystl.png" alt="Logo" id="headerImage" style="width: 100px; height: auto;" /></a>
-            <button id="icon" class="icon-button" title="Change Icon">
-                <i class="fa-regular fa-square-plus"></i>
-            </button>
-            <input type="text" class="editable-title" value="Untitled Workspace" />
-            <button id="information" class="icon-button" title="Information" onclick="window.location.href='infom.html';">
-                <i class="fa-solid fa-info"></i>
-            </button>
-
-            <!-- Star Toggle Icon -->
-            <button id="starButton" class="icon-button" title="Star">
-                <i class="fa-regular fa-star"></i>
-            </button>
-            <button id="comment" class="icon-button" title="Comment">
-                <i class="fa-regular fa-comment-dots"></i>
-            </button>
-
-            <!-- 3-dots button to toggle additional icons -->
-            <button id="moreIconsButton" class="icon-button" title="More Options">
-                <i class="fa-solid fa-ellipsis-v"></i>
-            </button>             
-
-            <!-- Hidden additional icons -->
-            <div id="extraIcons" style="display: none;">
+<header id="header">
+    <div class="toggle-button-container">
+        <a href="hub.html"><img src="images/Pathwaystl.png" alt="Logo" id="headerImage" style="width: 100px; height: auto;" /></a>
+        <button id="icon" class="icon-button" title="Change Icon">
+            <i class="fa-regular fa-square-plus"></i>
+        </button>
+        <input type="text" class="editable-title" value="Untitled Workspace" />
+        <button id="information" class="icon-button" title="Information" onclick="window.location.href='infom.html';">
+            <i class="fa-solid fa-info"></i>
+        </button>
+        <!-- Star Toggle Icon -->
+        <button id="starButton" class="icon-button" title="Star">
+            <i class="fa-regular fa-star"></i>
+        </button>
+        <button id="comment" class="icon-button" title="Comment">
+            <i class="fa-regular fa-comment-dots"></i>
+        </button>
+        <!-- 3-dots button to toggle additional icons -->
+        <button id="moreIconsButton" class="icon-button" title="More Options">
+            <i class="fa-solid fa-ellipsis-v"></i>
+        </button>
+        <!-- Hidden additional icons -->
+        <div id="extraIcons" style="display: none;">
                 <button class="icon-button" id="gridToggleButton" title="Grid Toggle">
                     <i class="fa-regular fa-rectangle-xmark"></i>
                 </button>
-                <button class="icon-button" id="paintBucketButton" title="Colour Tool">
+                <button class="icon-button" id="paintBucketButton">
                     <i class="fas fa-fill-drip"></i>
                 </button>
-                <button class="icon-button" id="binButton" title="Delete">
+                <button class="icon-button" id="binButton">
                     <i class="fas fa-trash"></i>
                 </button>
-                <button class="icon-button" id="lineToolButton" title="Line Tool">
+                <button class="icon-button" id="lineToolButton">
                     <i class="fas fa-slash"></i>
                 </button>
-                <button class="icon-button" id="squareToolButton" title="Square Tool">
+                <button class="icon-button" id="squareToolButton">
                     <i class="fa-regular fa-square"></i>
                 </button>
-                <button id="photoImportButton" class="icon-button" title="Web Photo Import">
+                <button id="photoImportButton" class="icon-button">
                     <i class="fas fa-globe"></i>
                 </button>
-                <button id="photoButton" class="icon-button" title="Photo Import">
+                <button id="photoButton" class="icon-button">
                     <i class="fas fa-image"></i>
                 </button>
-                <button id="pencilButton" class="icon-button" title="Pencil Tool">
+                <button id="pencilButton" class="icon-button">
                     <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button id="eraserButton" class="icon-button" title="Rubber Tool">
+                <button id="eraserButton" class="icon-button">
                     <i class="fas fa-eraser"></i>
                 </button>
-                <button id="musicButton" class="icon-button" title="Music Import">
+                <button id="musicButton" class="icon-button">
                     <i class="fas fa-music"></i>
                 </button>
-                <button id="cameraButton" class="icon-button" title="Web Video Import">
+                <button id="cameraButton" class="icon-button">
                     <i class="fa fa-video"></i>
                 </button>
-                <button id="tableButton" class="icon-button" title="Table">
+                <button id="tableButton" class="icon-button">
                     <i class="fas fa-table"></i>
                 </button>
-                <button id="stickynote" class="icon-button" title="Sticky Notes">
+                <button id="stickynote" class="icon-button">
                     <i class="fas fa-sticky-note"></i>
                 </button>
-                <button id="progress" class="icon-button" title="Progress">
+                <button id="progress" class="icon-button">
                     <i class="fa-solid fa-circle-half-stroke"></i>
                 </button>      
-                <button id="export" class="icon-button" title="Export">
+                <button id="export" class="icon-button"  title="Export">
                     <i class="fas fa-share"></i>
                 </button>
                 <button id="save" class="icon-button" title="Save">
@@ -89,12 +86,26 @@
                 </button>      
             </div>
         </div>
+
+        
     
         <!-- Brush button on the far right -->
         <div class="brush-button-container">
             <button id="pmenu" class="icon-button" title="Menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
+        </div>
+            <!-- Account Dropdown -->
+        <div class="account-dropdown-container">
+            <button id="accountButton" class="icon-button" title="Account">
+                <i class="fa-regular fa-user-circle"></i>
+            </button>
+            <div id="accountDropdown" class="account-dropdown">
+                <a href="#">Profile</a>
+                <a href="#">Settings</a>
+                <a href="#">Log Out</a>
+                <a id="downloadButton" href="#">Download</a>
+            </div>
         </div>
     </header>    
 
@@ -115,9 +126,11 @@
     <script src="Workspace/open.js"></script>
     <script src="Workspace/square.js"></script>
     <script src="Workspace/themes.js"></script>
+    <script src="Workspace/pre.js"></script>
 
     <script src="website/mobsup.js"></script>
-    <script src="loading.js"></script>
+
+    <script src="website/downpop.js"></script>
 
     <!-- Script to handle extra icon visibility -->
     <script>
