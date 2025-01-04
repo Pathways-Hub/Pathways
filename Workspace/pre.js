@@ -18,19 +18,19 @@ document.body.appendChild(square);
 
 // Mapping of button IDs to tooltips (image and description)
 const buttonDescriptions = {
-    'paintBucketButton': { image: 'workspace/tools/1colour.png', description: 'Colour Tool' },
-    'binButton': { image: 'workspace/tools/2delete.png', description: 'Delete' },
-    'lineToolButton': { image: 'workspace/tools/3line.png', description: 'Line Tool' },
-    'squareToolButton': { image: 'workspace/tools/4square.png', description: 'Square Tool' },
-    'photoImportButton': { image: 'workspace/tools/5web.png', description: 'Web Photo Import' },
-    'photoButton': { image: 'workspace/tools/6image.png', description: 'Photo Import' },
-    'pencilButton': { image: 'workspace/tools/7pen.png', description: 'Pencil Tool' },
-    'eraserButton': { image: 'workspace/tools/8rubber.png', description: 'Rubber Tool' },
-    'musicButton': { image: 'workspace/tools/9audio.png', description: 'Music Import' },
-    'cameraButton': { image: 'workspace/tools/10video.png', description: 'Web Video Import' },
-    'tableButton': { image: 'workspace/tools/11table.png', description: 'Table' },
-    'stickynote': { image: 'workspace/tools/12stick.png', description: 'Sticky Notes' },
-    'progress': { image: 'workspace/tools/13pro.png', description: 'Progress' },
+    'paintBucketButton': { image: 'tools/1colour.png', description: 'Colour Tool' },
+    'binButton': { image: 'tools/2delete.png', description: 'Delete' },
+    'lineToolButton': { image: 'tools/3line.png', description: 'Line Tool' },
+    'squareToolButton': { image: 'tools/4square.png', description: 'Square Tool' },
+    'photoImportButton': { image: 'tools/5web.png', description: 'Web Photo Import' },
+    'photoButton': { image: 'tools/6image.png', description: 'Photo Import' },
+    'pencilButton': { image: 'tools/7pen.png', description: 'Pencil Tool' },
+    'eraserButton': { image: 'tools/8rubber.png', description: 'Rubber Tool' },
+    'musicButton': { image: 'tools/9audio.png', description: 'Music Import' },
+    'cameraButton': { image: 'tools/10video.png', description: 'Web Video Import' },
+    'tableButton': { image: 'tools/11table.png', description: 'Table' },
+    'stickynote': { image: 'tools/12stick.png', description: 'Sticky Notes' },
+    'progress': { image: 'tools/13pro.png', description: 'Progress' },
 };
 
 // Function to track mouse movement and update square position
