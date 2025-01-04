@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Create the smaller text element
     const subText = document.createElement('p');
-    subText.textContent = 'or import existing files with Ctrl + B';
+    subText.textContent = 'or import existing files with Ctrl + L';
     subText.style.color = '#D1CFC9'; // Darker off-white color
     subText.style.margin = '0'; // Remove default margin
     subText.style.fontSize = '1em'; // Increase font size for better visibility
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Listen for Ctrl + B key combination
     document.addEventListener('keydown', function(event) {
-        if (event.ctrlKey && event.key === 'b') {
+        if (event.ctrlKey && event.key === 'l') {
             event.preventDefault(); // Prevent the default behavior
             fileInput.click(); // Trigger the file input dialog
         }
