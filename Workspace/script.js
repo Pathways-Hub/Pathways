@@ -22,27 +22,6 @@ function toggleGrid() {
     }
 }
 
-const gridToggleButton = document.getElementById('gridToggleButton');
-gridToggleButton.addEventListener('click', toggleGrid);
-
-const hideHeaderButton = document.getElementById('hideHeaderButton');
-const header = document.getElementById('header');
-hideHeaderButton.addEventListener('click', function() {
-    headerLocked = !headerLocked; // Toggle header lock state
-    if (headerLocked) {
-        header.classList.remove('header-hidden');
-        hideHeaderButton.innerHTML = '<i class="fas fa-lock"></i>';
-    } else {
-        if (!isHeaderHidden) {
-            header.classList.add('header-hidden');
-            hideHeaderButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
-        } else {
-            header.classList.remove('header-hidden');
-            hideHeaderButton.innerHTML = '<i class="fas fa-eye"></i>';
-        }
-    }
-});
-
 function snapToGrid(x, y) {
     const gridSize = 10;
     return {
