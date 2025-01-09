@@ -18,9 +18,9 @@ document.body.appendChild(square);
 
 // Mapping of button IDs to tooltips (image and description)
 const buttonDescriptions = {
-    'icon': { image: 'workspace/tools/0icon.png', description: 'Change Icon' },
-    'paintBucketButton': { image: 'workspace/tools/1colour.png', description: 'Colour Tool' },
-    'binButton': { image: 'workspace/tools/2delete.png', description: 'Delete' },
+    'icon': { image: '/tools/0icon.png', description: 'Change Icon' },
+    'paintBucketButton': { image: 'tools/1colour.png', description: 'Colour Tool' },
+    'binButton': { image: '/workspace/tools/2delete.png', description: 'Delete' },
     'lineToolButton': { image: 'workspace/tools/3line.png', description: 'Line Tool' },
     'squareToolButton': { image: 'workspace/tools/4square.png', description: 'Square Tool' },
     'photoImportButton': { image: 'workspace/tools/5web.png', description: 'Web Photo Import' },
