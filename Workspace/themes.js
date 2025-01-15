@@ -58,10 +58,10 @@ document.body.appendChild(menu);
 // Add buttons and other elements
 const buttons = [
   { text: 'Workspaces', link: 'workspaces.html' },
-  { text: 'Interfaces', link: 'interfaces.html' },
   { text: 'Dates', link: 'calendar.html' },
-  { text: 'Documents', link: 'documents.html' },
-  { text: 'Tabs', link: 'tabs.html' }
+  { text: 'Account', link: 'interfaces.html' },
+  { text: 'Settings', link: 'documents.html' },
+  { text: 'Hub', link: 'hub.html' }
 ];
 
 buttons.forEach((buttonData, index) => {
@@ -166,6 +166,182 @@ function updateHeaderBackground() {
     header.style.backgroundColor = '#ffffff';
   }
 }
+
+// Add a line divider above the subtitle
+const divider = document.createElement('div');
+divider.style.borderTop = '1px solid #ddd';
+divider.style.marginTop = '20px'; // Space above the divider
+
+// Append the divider to the menu
+menu.appendChild(divider);
+
+// Add a subtitle for the Templates section
+const templatesSubtitle = document.createElement('div');
+templatesSubtitle.innerText = 'Resources';
+templatesSubtitle.style.fontSize = '14px';
+templatesSubtitle.style.fontWeight = 'normal';
+templatesSubtitle.style.color = '#555'; // Subtle gray color for the subtitle
+templatesSubtitle.style.padding = '10px';
+templatesSubtitle.style.marginTop = '10px'; // Space above the subtitle
+templatesSubtitle.style.textAlign = 'left';
+
+// Append the subtitle to the menu
+menu.appendChild(templatesSubtitle);
+
+// Add the "Templates" button
+const hubpage = document.createElement('button');
+hubpage.innerHTML = '<i class="fa-solid fa-house"></i> Home'; // Add the icon before the text
+hubpage.style.padding = '10px';
+hubpage.style.border = 'none';
+hubpage.style.backgroundColor = 'white';
+hubpage.style.textAlign = 'left';
+hubpage.style.cursor = 'pointer';
+hubpage.style.width = '100%';
+hubpage.style.fontSize = '14px';
+hubpage.style.display = 'flex'; // Flex to align icon and text
+hubpage.style.alignItems = 'center'; // Center the icon and text vertically
+hubpage.style.gap = '10px'; // Add space between the icon and the text
+hubpage.addEventListener('click', () => {
+  window.location.href = 'hub.html'; // Redirect to the Templates page
+});
+
+// Append the Templates button to the menu
+menu.appendChild(hubpage);
+
+// Add the "Templates" button
+const templatesButton = document.createElement('button');
+templatesButton.innerHTML = '<i class="fa-solid fa-shapes"></i> Templates'; // Add the icon before the text
+templatesButton.style.padding = '10px';
+templatesButton.style.border = 'none';
+templatesButton.style.backgroundColor = 'white';
+templatesButton.style.textAlign = 'left';
+templatesButton.style.cursor = 'pointer';
+templatesButton.style.width = '100%';
+templatesButton.style.fontSize = '14px';
+templatesButton.style.display = 'flex'; // Flex to align icon and text
+templatesButton.style.alignItems = 'center'; // Center the icon and text vertically
+templatesButton.style.gap = '10px'; // Add space between the icon and the text
+templatesButton.addEventListener('click', () => {
+  window.location.href = 'templates.html'; // Redirect to the Templates page
+});
+
+// Append the Templates button to the menu
+menu.appendChild(templatesButton);
+
+// Add the "Inbox" button
+const inboxbutton = document.createElement('button');
+inboxbutton.innerHTML = '<i class="fa-solid fa-inbox fa-fade"></i> Inbox'; // Add the icon before the text
+inboxbutton.style.padding = '10px';
+inboxbutton.style.border = 'none';
+inboxbutton.style.backgroundColor = 'white';
+inboxbutton.style.textAlign = 'left';
+inboxbutton.style.cursor = 'pointer';
+inboxbutton.style.width = '100%';
+inboxbutton.style.fontSize = '14px';
+inboxbutton.style.display = 'flex'; // Flex to align icon and text
+inboxbutton.style.alignItems = 'center'; // Center the icon and text vertically
+inboxbutton.style.gap = '10px'; // Add space between the icon and the text
+
+// Append the button to the menu
+menu.appendChild(inboxbutton);
+
+// Append the button to the menu
+menu.appendChild(inboxbutton);
+
+// Create the popup overlay and container
+const popupOverlay = document.createElement('div');
+popupOverlay.id = 'popupOverlay';
+popupOverlay.style.position = 'fixed';
+popupOverlay.style.top = '0';
+popupOverlay.style.left = '0';
+popupOverlay.style.width = '100%';
+popupOverlay.style.height = '100%';
+popupOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+popupOverlay.style.display = 'none';
+popupOverlay.style.zIndex = '9998';
+
+const popupContainer = document.createElement('div');
+popupContainer.id = 'popupContainer';
+popupContainer.style.position = 'fixed';
+popupContainer.style.top = '50%';
+popupContainer.style.left = '50%';
+popupContainer.style.transform = 'translate(-50%, -50%)';
+popupContainer.style.width = '400px';
+popupContainer.style.backgroundColor = 'white';
+popupContainer.style.padding = '20px';
+popupContainer.style.borderRadius = '8px';
+popupContainer.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+popupContainer.style.display = 'none';
+popupContainer.style.zIndex = '9999';
+
+// Add popup content
+const imageElement = document.createElement('img');
+imageElement.id = 'popupImage';
+imageElement.src = 'Workspace/images/inbox.png';
+imageElement.alt = 'Inbox';
+imageElement.style.width = '100%';
+imageElement.style.borderRadius = '8px';
+
+const titleElement = document.createElement('div');
+titleElement.id = 'popupTitle';
+titleElement.textContent = 'Pathways Inbox';
+titleElement.style.marginTop = '15px';
+titleElement.style.fontSize = '18px';
+titleElement.style.fontWeight = 'bold';
+titleElement.style.textAlign = 'center';
+
+// Create a function to generate a message box
+function createMessageBox(title, content) {
+    const messageBox = document.createElement('div');
+    messageBox.style.backgroundColor = '#f2f2f2'; // Light blue background
+    messageBox.style.borderRadius = '5px';
+    messageBox.style.padding = '10px';
+    messageBox.style.marginTop = '10px';
+    messageBox.style.textAlign = 'left';
+
+    const messageTitle = document.createElement('div');
+    messageTitle.textContent = title;
+    messageTitle.style.fontWeight = 'bold';
+    messageTitle.style.color = 'black'; // Black text for the title
+
+    const messageContent = document.createElement('div');
+    messageContent.textContent = content;
+    messageContent.style.color = '#333'; // Dark text for better contrast
+
+    messageBox.appendChild(messageTitle);
+    messageBox.appendChild(messageContent);
+    return messageBox;
+}
+
+// Add message boxes
+popupContainer.appendChild(imageElement);
+popupContainer.appendChild(titleElement);
+popupContainer.appendChild(createMessageBox('Update 1', 'Example text for the first update.'));
+
+// Add "No More Updates" message
+const noMoreUpdates = document.createElement('div');
+noMoreUpdates.textContent = '...';
+noMoreUpdates.style.color = 'grey';
+noMoreUpdates.style.marginTop = '20px';
+noMoreUpdates.style.textAlign = 'center';
+popupContainer.appendChild(noMoreUpdates);
+
+// Append the popup and overlay to the body
+document.body.appendChild(popupOverlay);
+document.body.appendChild(popupContainer);
+
+// Add event listener to the Inbox button
+inboxbutton.addEventListener('click', () => {
+    // Show the popup
+    popupOverlay.style.display = 'block';
+    popupContainer.style.display = 'block';
+});
+
+// Close popup when clicking outside
+popupOverlay.addEventListener('click', () => {
+    popupOverlay.style.display = 'none';
+    popupContainer.style.display = 'none';
+});
 
 // Toggle menu visibility
 let isMenuVisible = false;
