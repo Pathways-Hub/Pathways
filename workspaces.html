@@ -13,7 +13,7 @@
 <header id="header">
     <div class="toggle-button-container">
         <a href="hub.html"><img src="images/Pathwaystl.png" alt="Logo" id="headerImage" style="width: 100px; height: auto;" /></a>
-        <button id="icon" class="icon-button" title="Change Icon">
+        <button id="icon" class="icon-button">
             <i class="fa-regular fa-square-plus"></i>
         </button>
         <input type="text" class="editable-title" value="Untitled Workspace" />
@@ -33,9 +33,6 @@
         </button>
         <!-- Hidden additional icons -->
         <div id="extraIcons" style="display: none;">
-                <button class="icon-button" id="gridToggleButton" title="Grid Toggle">
-                    <i class="fa-regular fa-rectangle-xmark"></i>
-                </button>
                 <button class="icon-button" id="paintBucketButton">
                     <i class="fas fa-fill-drip"></i>
                 </button>
@@ -104,7 +101,7 @@
                 <a href="#">Profile</a>
                 <a href="#">Settings</a>
                 <a href="#">Log Out</a>
-                <a id="downloadButton" href="#">Download</a>
+                <a id="downloadButton" href="#"><i class="fa-solid fa-circle-down"></i> Download</a>
             </div>
         </div>
     </header>    
@@ -129,8 +126,10 @@
     <script src="Workspace/pre.js"></script>
 
     <script src="website/mobsup.js"></script>
+    <script src="website/save.js"></script>
 
     <script src="website/downpop.js"></script>
+    <script src="website/inbox.js"></script>
 
     <!-- Script to handle extra icon visibility -->
     <script>
