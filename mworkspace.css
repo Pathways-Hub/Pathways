@@ -56,6 +56,14 @@ body {
   outline: none;
 }
 
+/* Vertical line styling */
+.vertical-line {
+  width: 1px; /* Thin line */
+  height: 30px; /* Same height as buttons */
+  background-color: #ccc; /* Light gray color */
+  margin-right: 10px; /* Space between the line and the next button */
+}
+
 /* Style for the editable title */
 #title {
   font-size: 16px; /* Slightly smaller than the default font size */
