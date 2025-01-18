@@ -7,7 +7,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const savedTitle = localStorage.getItem('noteTitle');
     const savedNote = localStorage.getItem('noteContent');
     
-    // Load saved title and note content if they exist
     if (savedTitle) {
         title.textContent = savedTitle;
     }
@@ -30,11 +29,16 @@ function toggleFormat(command) {
     document.execCommand(command, false, null);
 }
 
-// Attach event listeners to taskbar buttons for formatting
-document.getElementById('boldButton').addEventListener('click', () => {
-    toggleFormat('bold');
+// Attach event listeners to taskbar buttons
+document.getElementById('boldButton').addEventListener('click', () => toggleFormat('bold'));
+document.getElementById('italicButton').addEventListener('click', () => toggleFormat('italic'));
+
+// Bullet point list toggle
+document.getElementById('bulletButton').addEventListener('click', () => {
+    document.execCommand('insertUnorderedList', false, null); // Adds bullet points
 });
 
-document.getElementById('italicButton').addEventListener('click', () => {
-    toggleFormat('italic');
+// Numbered list toggle
+document.getElementById('numberedButton').addEventListener('click', () => {
+    document.execCommand('insertOrderedList', false, null); // Adds numbered list
 });
