@@ -1,0 +1,78 @@
+/* General body styling */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: black;
+  overflow-x: hidden;
+}
+
+/* Top bar styling */
+#top-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #34eb9e;
+}
+
+/* Style for the editable title */
+#title {
+  font-size: 18px;
+  font-weight: normal;
+  padding: 10px 15px;
+  margin: 0;
+  text-align: left;
+  color: grey;
+  background-color: white;
+  box-sizing: border-box;
+  outline: none; /* Remove focus outline */
+  white-space: nowrap;
+  overflow-x: auto; /* Allow long text to scroll horizontally */
+}
+
+/* Style for the editable note area */
+#note {
+  padding: 15px;
+  width: 100%;
+  min-height: calc(100vh - 70px); /* Adjust for the top bar, title, and taskbar */
+  box-sizing: border-box;
+  outline: none; /* Remove focus outline */
+  white-space: pre-wrap; /* Preserve spaces and line breaks */
+  word-wrap: break-word; /* Prevent long words from overflowing */
+}
+
+/* Taskbar styling */
+#taskbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #f8f8f8; /* Off-white */
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 0 10px;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Buttons in the taskbar */
+.taskbar-button {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+}
+
+.taskbar-button:focus {
+  outline: none;
+}
+
+.taskbar-button:hover {
+  color: #34eb9e;
+}
