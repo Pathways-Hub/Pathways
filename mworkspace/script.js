@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const savedTitle = localStorage.getItem('noteTitle');
     const savedNote = localStorage.getItem('noteContent');
     
+    // Load saved title and note content if they exist
     if (savedTitle) {
         title.textContent = savedTitle;
     }
@@ -29,6 +30,11 @@ function toggleFormat(command) {
     document.execCommand(command, false, null);
 }
 
-// Attach event listeners to taskbar buttons
-document.getElementById('boldButton').addEventListener('click', () => toggleFormat('bold'));
-document.getElementById('italicButton').addEventListener('click', () => toggleFormat('italic'));
+// Attach event listeners to taskbar buttons for formatting
+document.getElementById('boldButton').addEventListener('click', () => {
+    toggleFormat('bold');
+});
+
+document.getElementById('italicButton').addEventListener('click', () => {
+    toggleFormat('italic');
+});
