@@ -10,16 +10,24 @@
 </head>
 <body>
     <div id="top-bar"></div>
-    <div id="title" contenteditable="true">Untitled</div>
-    <div id="note" contenteditable="true"></div>
     <div id="taskbar">
+        <!-- Favicon as an icon in the taskbar -->
+        <img src="images/favicon.png" alt="Favicon" class="taskbar-button">
         <button id="boldButton" class="taskbar-button">
             <i class="fas fa-bold"></i>
         </button>
         <button id="italicButton" class="taskbar-button">
             <i class="fas fa-italic"></i>
         </button>
+        <button id="bulletButton" class="taskbar-button">
+            <i class="fas fa-list-ul"></i> <!-- Bullet points icon -->
+        </button>
+        <button id="numberedButton" class="taskbar-button">
+            <i class="fas fa-list-ol"></i> <!-- Numbered list icon -->
+        </button>
     </div>
+    <div id="title" contenteditable="true">Untitled</div>
+    <div id="note" contenteditable="true"></div>
     <script src="mworkspace/script.js"></script>
 </body>
 </html>
